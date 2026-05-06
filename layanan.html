@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+
+    <title>Layanan — PT Sanggar Seni Annisa Rumpaka</title>
+    <meta name="description" content="Layanan Annisa Rumpaka: pertunjukan seni panggung, sewa & beli kostum tari (Arum Kostum), program sekolah seni untuk anak & remaja (Arum Art School), dan kolaborasi event festival." />
+    <link rel="canonical" href="https://annisarumpaka.com/layanan.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Layanan — Annisa Rumpaka" />
+    <meta property="og:description" content="Pertunjukan, kostum, sekolah seni, dan kolaborasi festival." />
+    <meta property="og:url" content="https://annisarumpaka.com/layanan.html" />
+    <meta property="og:image" content="https://annisarumpaka.com/assets/og-image.svg" />
+    <meta property="og:locale" content="id_ID" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Layanan — Annisa Rumpaka" />
+    <meta name="twitter:image" content="https://annisarumpaka.com/assets/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      /* ── PAGE-SPECIFIC: SERVICES ── */
+      .svc-wrap { padding: 100px 50px; max-width: 1300px; margin: 0 auto; }
+
+      .svc-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+        align-items: center;
+        padding: 80px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .svc-item:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+      .svc-item.rev .svc-img { order: 2; }
+      .svc-item.rev .svc-body { order: 1; }
+
+      .svc-img-wrap {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+      }
+      .svc-img-wrap.img-ph { background: linear-gradient(135deg, #1a1410 0%, #0a0a0a 100%); }
+      .svc-num {
+        position: absolute;
+        top: 20px; left: 20px;
+        font-family: "Playfair Display", serif;
+        font-size: 12px; font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 0.12em;
+        background: rgba(7, 7, 7, 0.65);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--gold-dim);
+        padding: 5px 13px;
+        border-radius: 100px;
+        z-index: 2;
+      }
+
+      .svc-cat {
+        font-size: 9.5px; font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .svc-cat::before {
+        content: "";
+        display: block;
+        width: 20px; height: 1px;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+      .svc-body h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(34px, 3.6vw, 54px);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.025em;
+        margin-bottom: 22px;
+        text-wrap: balance;
+      }
+      .svc-body p {
+        font-size: 13.5px;
+        line-height: 1.85;
+        color: var(--text-mute);
+        margin-bottom: 28px;
+        text-wrap: pretty;
+      }
+
+      .svc-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 36px;
+      }
+
+      /* ── DECORATIVE SLIDE ART ── */
+      .svc-art {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media (max-width: 1100px) {
+        .svc-wrap { padding: 80px 32px; }
+        .svc-item { gap: 48px; padding: 64px 0; }
+      }
+      @media (max-width: 768px) {
+        .svc-wrap { padding: 60px 20px; }
+        .svc-item {
+          grid-template-columns: 1fr;
+          gap: 32px; padding: 52px 0;
+        }
+        .svc-item.rev .svc-img,
+        .svc-item.rev .svc-body { order: unset; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+
+    <div id="cur" aria-hidden="true"></div>
+    <div id="ring" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="index.html" class="logo" aria-label="Annisa Rumpaka — Beranda">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div>
+          <span class="logo-name">Annisa Rumpaka</span>
+          <span class="logo-sub">Sanggar Seni · Est. 2003</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html" class="act" aria-current="page">Layanan</a></li>
+        <li><a href="kostum.html">Arum Kostum</a></li>
+        <li><a href="art-school.html">Art School</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="nav-r">
+        <button class="icon-b" type="button" aria-label="Cari">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+        <a href="kontak.html" class="cta-b">Hubungi Kami</a>
+        <button class="ham" type="button" id="hamBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu navigasi" aria-hidden="true">
+      <nav class="mob-nav" aria-label="Navigasi mobile">
+        <a href="index.html">Beranda</a>
+        <a href="layanan.html" class="act" aria-current="page">Layanan</a>
+        <a href="kostum.html">Arum Kostum</a>
+        <a href="art-school.html">Art School</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <a href="kontak.html" class="cta-b mob-cta">Hubungi Kami</a>
+    </div>
+
+    <main id="main">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="page-hero-title">
+        <div class="ph-bg" aria-hidden="true"></div>
+        <div class="ph-grain" aria-hidden="true"></div>
+        <div class="ph-vig" aria-hidden="true"></div>
+        <div class="ph-content">
+          <div class="eyebrow">
+            <span class="dash" aria-hidden="true"></span>
+            <span>Layanan</span>
+          </div>
+          <h1 id="page-hero-title">Yang Kami<br /><em>Tawarkan</em></h1>
+          <p>Dari pertunjukan panggung hingga pendidikan seni — kami hadir untuk melestarikan dan merayakan keindahan budaya Sunda.</p>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <div class="svc-wrap">
+
+        <!-- 01 -->
+        <article class="svc-item" id="seni-panggung">
+          <div class="svc-img">
+            <div class="svc-img-wrap img-ph" role="img" aria-label="Visual Seni Panggung">
+              <span class="svc-num" aria-hidden="true">01</span>
+              <div class="ph-label">PHOTO · TARI PENYAMBUTAN</div>
+            </div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Jasa Pertunjukan</div>
+            <h2>Seni<br />Panggung</h2>
+            <p>Persembahan tari tradisional Sunda yang memukau untuk pernikahan adat, penyambutan tamu kehormatan, wisuda, dan berbagai perayaan budaya nusantara. Kami menghadirkan penari terlatih dengan kostum premium dan tata panggung profesional.</p>
+            <div class="svc-tags">
+              <span class="tag">Tari Penyambutan</span>
+              <span class="tag">Tari Klasik Sunda</span>
+              <span class="tag">Tari Kreasi</span>
+              <span class="tag">Pertunjukan Kolosal</span>
+              <span class="tag">Pernikahan Adat</span>
+            </div>
+            <a href="kontak.html" class="link-arrow">
+              Konsultasi Gratis
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="svc-item rev" id="arum-kostum">
+          <div class="svc-img">
+            <div class="svc-img-wrap img-ph" role="img" aria-label="Visual Arum Kostum">
+              <span class="svc-num" aria-hidden="true">02</span>
+              <div class="ph-label">PHOTO · KOSTUM HANDMADE</div>
+            </div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Arum Kostum</div>
+            <h2>Busana<br />Adat</h2>
+            <p>Koleksi kostum tari tradisional premium dengan detail handmade yang dikerjakan oleh pengrajin berpengalaman. Tersedia untuk sewa maupun pembelian bagi keperluan panggung profesional, festival budaya, dan dokumentasi.</p>
+            <div class="svc-tags">
+              <span class="tag">Sewa Kostum</span>
+              <span class="tag">Beli Kostum</span>
+              <span class="tag">Tari Sunda</span>
+              <span class="tag">Handmade</span>
+              <span class="tag">Custom Order</span>
+            </div>
+            <a href="kostum.html" class="link-arrow">
+              Lihat Koleksi
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="svc-item" id="art-school">
+          <div class="svc-img">
+            <div class="svc-img-wrap img-ph" role="img" aria-label="Visual Arum Art School">
+              <span class="svc-num" aria-hidden="true">03</span>
+              <div class="ph-label">PHOTO · KELAS TARI ANAK</div>
+            </div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Arum Art School</div>
+            <h2>Sekolah<br />Seni Tari</h2>
+            <p>Program belajar tari untuk anak dan remaja dengan metode kreatif yang memadukan nilai tradisi Sunda dengan ekspresi seni kontemporer. Dibimbing langsung oleh penari senior berpengalaman lebih dari dua dekade.</p>
+            <div class="svc-tags">
+              <span class="tag">Anak 5–12 Tahun</span>
+              <span class="tag">Remaja 13–18 Tahun</span>
+              <span class="tag">Tari Dasar</span>
+              <span class="tag">Tari Sunda Klasik</span>
+              <span class="tag">Tari Kreasi</span>
+            </div>
+            <a href="art-school.html" class="link-arrow">
+              Pelajari Program
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="svc-item rev" id="festival">
+          <div class="svc-img">
+            <div class="svc-img-wrap img-ph" role="img" aria-label="Visual Festival & Panggung">
+              <span class="svc-num" aria-hidden="true">04</span>
+              <div class="ph-label">PHOTO · FESTIVAL GETASANDIK</div>
+            </div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Portofolio Event</div>
+            <h2>Festival &<br />Panggung</h2>
+            <p>Rekam jejak kami menghadirkan seni budaya di berbagai panggung bergengsi — dari festival nasional seperti Getasandik hingga panggung budaya internasional. Kami siap menjadi mitra kebudayaan untuk event Anda.</p>
+            <div class="svc-tags">
+              <span class="tag">Festival Nasional</span>
+              <span class="tag">Panggung Internasional</span>
+              <span class="tag">Event Korporat</span>
+              <span class="tag">Cultural Diplomacy</span>
+            </div>
+            <a href="kontak.html" class="link-arrow">
+              Diskusi Event
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- STATS -->
+      <section class="stats" aria-label="Statistik sanggar">
+        <div class="stats-inner">
+          <div class="stat">
+            <div class="stat-num">20+</div>
+            <div class="stat-lbl">Tahun Berpengalaman</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">500+</div>
+            <div class="stat-lbl">Pertunjukan Sukses</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">300+</div>
+            <div class="stat-lbl">Alumni Art School</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">15+</div>
+            <div class="stat-lbl">Festival Bergengsi</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="cta-strip">
+        <div class="cta-inner">
+          <h2>Siap Berkolaborasi<br /><em>Bersama Kami?</em></h2>
+          <p>Ceritakan kebutuhan Anda dan tim kami akan menghubungi dalam waktu 1×24 jam.</p>
+          <a href="kontak.html" class="btn-gold">
+            Hubungi Kami Sekarang
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-mark" aria-hidden="true"></div>
+            <div>
+              <span class="logo-name">Annisa Rumpaka</span>
+              <span class="logo-sub">Sanggar Seni · Est. 2003</span>
+            </div>
+          </a>
+          <p class="footer-tagline">Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigasi</div>
+          <ul class="footer-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="kostum.html">Arum Kostum</a></li>
+            <li><a href="art-school.html">Art School</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Layanan</div>
+          <ul class="footer-list">
+            <li><a href="layanan.html#seni-panggung">Seni Panggung</a></li>
+            <li><a href="kostum.html">Sewa Kostum</a></li>
+            <li><a href="art-school.html">Sekolah Tari</a></li>
+            <li><a href="layanan.html#festival">Festival & Event</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <ul class="footer-list">
+            <li><a href="/cdn-cgi/l/email-protection#2940474f4669484747405a485b5c4459484248074a4644"><span class="__cf_email__" data-cfemail="e28b8c848da2838c8c8b918390978f92838983cc818d8f">[email&#160;protected]</span></a></li>
+            <li><a href="https://wa.me/628XXXXXXXXX">+62 8XX-XXXX-XXXX</a></li>
+            <li><span>Bandung, Jawa Barat</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p class="footer-copy">© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.</p>
+        <p class="footer-copy">Melestarikan Seni Budaya Sunda sejak 2003.</p>
+      </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+  </body>
+</html>
