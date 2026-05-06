@@ -163,7 +163,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.52, duration: 0.5 }}
               className="s-acts"
-              style={{ marginTop: '48px' }}
+              style={{ marginTop: '20px' }}
             >
               <Link
                 href={SLIDES[current].href}
@@ -358,7 +358,7 @@ export default function Home() {
           font-size: 13px; line-height: 1.82;
           color: var(--text-mute);
           max-width: 380px;
-          margin: 22px 0 96px;
+          margin: 22px 0 80px;
         }
 
         /* CTA satu baris: ▶ Jelajahi Lebih */

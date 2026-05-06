@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ const KOSTUM_DATA = [
     cat: "klasik",
     catLabel: "Tari Klasik",
     status: "both",
-    desc: "Kostum ikonik Tari Merak ciptaan Raden Tjetje Somantri — payet kerlap-kerlip dan sayap merak yang dramatis.",
+    desc: "Kostum ikonik ciptaan Raden Tjetje Somantri kerlap-kerlip dan sayap merak dramatis.",
     fullDesc: "Kostum Tari Merak dengan detail bordir tangan, payet emas, dan sayap merak terbentang. Cocok untuk pertunjukan klasik, festival, dan dokumentasi budaya.",
     bahan: "Beludru, Sutra, Payet",
     ukuran: "S, M, L, XL",
@@ -164,6 +164,15 @@ export default function Kostum() {
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState<typeof KOSTUM_DATA[0] | null>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const filtered = useMemo(() => {
     return filter === 'all' ? KOSTUM_DATA : KOSTUM_DATA.filter(item => item.cat === filter);
   }, [filter]);
@@ -213,21 +222,30 @@ export default function Kostum() {
         </div>
 
         {/* GRID */}
-        <motion.div layout className="kostum-grid">
+        <div className="kostum-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? '12px' : '18px' }}>
           <AnimatePresence mode="popLayout">
             {filtered.map(item => (
               <motion.button
                 layout
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 className="kostum-card"
                 onClick={() => setSelected(item)}
               >
-                <div 
-                  className="kostum-img img-ph" 
-                  style={{ backgroundImage: `url("${item.img}")` }}
+                <div
+                  className="kostum-img"
+                  style={{
+                    backgroundImage: `url("${item.img}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100%',
+                    height: isMobile ? '180px' : '260px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    flexShrink: 0,
+                  }}
                 >
                   <span className="kostum-tag">{item.catLabel}</span>
                   <span className={`kostum-status ${item.status}`}>
@@ -237,7 +255,6 @@ export default function Kostum() {
                 <div className="kostum-body">
                   <div className="kostum-cat">{item.catLabel}</div>
                   <h3 className="kostum-name">{item.name}</h3>
-                  <p className="kostum-desc">{item.desc}</p>
                   <div className="kostum-prices">
                     <div className="price">
                       <div className="price-lbl">Sewa</div>
@@ -252,7 +269,7 @@ export default function Kostum() {
               </motion.button>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </section>
 
       {/* CTA */}
@@ -271,25 +288,49 @@ export default function Kostum() {
       <AnimatePresence>
         {selected && (
           <div className="modal-overlay open">
-             <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0 }}
+             {/* backdrop */}
+             <div
                className="modal-backdrop"
                onClick={() => setSelected(null)}
+               style={{
+                 position: 'fixed', inset: 0, zIndex: 0,
+                 background: 'rgba(4,4,4,0.93)',
+                 backdropFilter: 'blur(16px)',
+                 WebkitBackdropFilter: 'blur(16px)',
+               }}
              />
-             <motion.div 
-               initial={{ scale: 0.9, opacity: 0 }}
+             <motion.div
+               initial={{ scale: 0.94, opacity: 0 }}
                animate={{ scale: 1, opacity: 1 }}
-               exit={{ scale: 0.9, opacity: 0 }}
+               exit={{ scale: 0.94, opacity: 0 }}
                className="modal"
+               style={{
+                 position: 'relative', zIndex: 1,
+                 display: 'grid',
+                 gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                 gridTemplateRows: isMobile ? 'auto 1fr' : undefined,
+                 height: isMobile ? 'auto' : 'min(88vh, 640px)',
+                 maxHeight: isMobile ? '92vh' : undefined,
+                 overflowY: isMobile ? 'auto' : 'hidden',
+                 alignItems: 'stretch',
+               }}
              >
                 <button className="modal-close" onClick={() => setSelected(null)}>
                   <X size={18} />
                 </button>
-                <div 
-                  className="modal-img img-ph" 
-                  style={{ backgroundImage: `url("${selected.img}")` }}
+                <div
+                  style={{
+                    backgroundImage: `url("${selected.img}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100%',
+                    height: isMobile ? '56vw' : '100%',
+                    minHeight: isMobile ? '220px' : '300px',
+                    maxHeight: isMobile ? '320px' : undefined,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    flexShrink: 0,
+                  }}
                 />
                 <div className="modal-body">
                   <div className="modal-cat">{selected.catLabel}</div>
@@ -340,83 +381,94 @@ export default function Kostum() {
         .ph-content em { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-weight: 700; }
         .ph-content p { font-size: 15px; color: var(--text-mute); max-width: 480px; line-height: 1.7; }
 
-        .catalog-wrap { padding: 80px 50px 100px; max-width: 1300px; margin: 0 auto; }
-        .catalog-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
-        .catalog-head h2 { font-family: var(--font-serif); font-size: clamp(28px, 3vw, 42px); font-weight: 900; letter-spacing: -0.02em; line-height: 1; margin-bottom: 10px; color: #fff; }
-        .catalog-head p { font-size: 13px; color: var(--text-mute); max-width: 460px; line-height: 1.7; }
-        .link-arrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; }
+        /* catalog */
+        .catalog-wrap { padding: 64px 50px 96px; max-width: 1400px; margin: 0 auto; }
+        .catalog-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 32px; flex-wrap: wrap; }
+        .catalog-head h2 { font-family: var(--font-serif); font-size: clamp(26px, 2.8vw, 38px); font-weight: 900; letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; color: #fff; }
+        .catalog-head p { font-size: 12.5px; color: var(--text-mute); max-width: 440px; line-height: 1.7; }
+        .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10.5px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em; white-space: nowrap; transition: gap 0.3s; }
+        .link-arrow:hover { gap: 13px; }
 
-        .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
-        .filter-btn { padding: 10px 18px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.12); background: var(--glass); color: rgba(255, 255, 255, 0.65); font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.3s; }
+        /* filters */
+        .filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 36px; }
+        .filter-btn { padding: 9px 16px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); background: var(--glass); color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; transition: all 0.3s; cursor: pointer; }
         .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
         .filter-btn.act { background: var(--gold); border-color: var(--gold); color: #070707; }
-        .filter-count { margin-left: 8px; font-size: 9.5px; opacity: 0.7; }
+        .filter-count { margin-left: 6px; font-size: 9px; opacity: 0.7; }
 
-        .kostum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-        .kostum-card { position: relative; border-radius: 20px; overflow: hidden; background: var(--surface-2); border: 1px solid rgba(255, 255, 255, 0.06); transition: border-color 0.3s, box-shadow 0.4s; display: flex; flex-direction: column; text-align: left; }
-        .kostum-card:hover { border-color: var(--gold-dim); box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5); }
-        .kostum-img { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.6s ease; }
-        .kostum-card:hover .kostum-img { transform: scale(1.03); }
-        .kostum-tag { position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 100px; background: rgba(7, 7, 7, 0.65); backdrop-filter: blur(8px); border: 1px solid var(--gold-dim); font-size: 8.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); z-index: 2; }
-        .kostum-status { position: absolute; top: 14px; right: 14px; padding: 5px 12px; border-radius: 100px; background: rgba(7, 7, 7, 0.65); backdrop-filter: blur(8px); font-size: 8.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; z-index: 2; }
-        .kostum-status.sewa { color: #7ab050; border: 1px solid rgba(122, 176, 80, 0.4); }
-        .kostum-status.beli { color: #c89e40; border: 1px solid rgba(200, 158, 64, 0.4); }
+        /* grid — 4 kolom desktop */
+        .kostum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .kostum-card { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s, transform 0.35s ease, box-shadow 0.35s ease; display: flex; flex-direction: column; text-align: left; cursor: pointer; }
+        .kostum-card:hover { border-color: rgba(200,169,110,0.25); transform: translateY(-5px); box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
+        .kostum-img { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.7s ease; }
+        .kostum-card:hover .kostum-img { transform: scale(1.04); }
+        .kostum-tag { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(7,7,7,0.7); backdrop-filter: blur(8px); border: 1px solid var(--gold-dim); font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); z-index: 2; }
+        .kostum-status { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(7,7,7,0.7); backdrop-filter: blur(8px); font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; z-index: 2; }
+        .kostum-status.sewa { color: #7ab050; border: 1px solid rgba(122,176,80,0.4); }
+        .kostum-status.beli { color: #c89e40; border: 1px solid rgba(200,158,64,0.4); }
         .kostum-status.both { color: var(--gold); border: 1px solid var(--gold-dim); }
-        .kostum-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
-        .kostum-name { font-family: var(--font-serif); font-size: 22px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.15; margin-bottom: 6px; color: #fff; }
-        .kostum-cat { font-size: 9.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-        .kostum-desc { font-size: 12.5px; line-height: 1.65; color: var(--text-mute); margin-bottom: 18px; flex: 1; }
-        .kostum-prices { display: flex; gap: 14px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.06); margin-top: auto; }
+        .kostum-body { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; }
+        .kostum-cat { font-size: 8.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .kostum-name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 6px; color: #fff; }
+        .kostum-desc { font-size: 11.5px; line-height: 1.6; color: var(--text-mute); margin-bottom: 14px; flex: 1; }
+        .kostum-prices { display: flex; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: auto; }
         .price { flex: 1; }
-        .price-lbl { font-size: 8.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 4px; }
-        .price-val { font-family: var(--font-serif); font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
-        .price-val .cur { font-size: 11px; font-weight: 500; color: var(--text-mute); margin-right: 2px; }
+        .price-lbl { font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 3px; }
+        .price-val { font-family: var(--font-serif); font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+        .price-val .cur { font-size: 10px; font-weight: 500; color: var(--text-mute); margin-right: 2px; }
         .price-empty { font-size: 12px; color: var(--text-soft); font-style: italic; }
 
-        .cta-strip { padding: 120px 50px; text-align: center; background: var(--dark); border-top: 1px solid rgba(255, 255, 255, 0.06); }
-        .cta-inner h2 { font-family: var(--font-serif); font-size: clamp(38px, 4.5vw, 64px); font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 24px; }
+        /* cta */
+        .cta-strip { padding: 88px 50px; text-align: center; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); }
+        .cta-inner h2 { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 56px); font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 18px; }
         .cta-inner h2 em { color: var(--gold); font-style: italic; }
-        .cta-inner p { font-size: 15px; color: var(--text-mute); margin-bottom: 40px; }
-        .btn-gold { display: inline-flex; align-items: center; gap: 12px; padding: 16px 36px; background: var(--gold); color: #070707; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; border-radius: 100px; transition: transform 0.3s, box-shadow 0.3s; }
+        .cta-inner p { font-size: 14px; color: var(--text-mute); margin-bottom: 36px; }
+        .btn-gold { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--gold); color: #070707; font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.14em; border-radius: 100px; transition: transform 0.3s, box-shadow 0.3s; }
         .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 40px var(--gold-glow); }
 
-        .modal-overlay { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 30px; }
-        .modal-backdrop { position: absolute; inset: 0; background: rgba(7, 7, 7, 0.85); backdrop-filter: blur(12px); }
-        .modal { position: relative; background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; max-width: 880px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 0; box-shadow: 0 50px 100px rgba(0,0,0,0.6); }
-        .modal-img { position: relative; aspect-ratio: 4 / 5; background-size: cover; background-position: center; overflow: hidden; }
-        .modal-body { padding: 36px 36px 36px 30px; display: flex; flex-direction: column; }
-        .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(7, 7, 7, 0.7); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3; color: #fff; }
-        .modal-cat { font-size: 9.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-        .modal-name { font-family: var(--font-serif); font-size: 30px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px; color: #fff; }
-        .modal-desc { font-size: 13px; line-height: 1.75; color: var(--text-mute); margin-bottom: 22px; }
-        .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; padding: 16px 18px; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; background: var(--glass); }
-        .modal-meta div { font-size: 11.5px; line-height: 1.6; }
-        .modal-meta strong { display: block; color: var(--gold); font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 3px; }
-        .modal-prices { display: flex; gap: 18px; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 22px; }
-        .modal-prices .price-val { font-size: 22px; }
+        /* modal */
+        .modal-overlay { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .modal { background: var(--surface); border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; max-width: 860px; width: 100%; height: min(88vh, 640px); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; box-shadow: 0 50px 120px rgba(0,0,0,0.8); }
+        .modal-img { position: relative; overflow: hidden; }
+        .modal-body { padding: 28px 28px 28px 24px; display: flex; flex-direction: column; overflow-y: auto; min-height: 0; }
+        .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(7,7,7,0.7); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3; color: #fff; cursor: pointer; }
+        .modal-cat { font-size: 9px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+        .modal-name { font-family: var(--font-serif); font-size: 26px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; color: #fff; }
+        .modal-desc { font-size: 12.5px; line-height: 1.75; color: var(--text-mute); margin-bottom: 20px; }
+        .modal-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; background: var(--glass); }
+        .modal-meta div { font-size: 11px; line-height: 1.6; }
+        .modal-meta strong { display: block; color: var(--gold); font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 3px; }
+        .modal-prices { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 20px; }
+        .modal-prices .price-val { font-size: 20px; }
 
+        /* responsive */
+        @media (max-width: 1200px) {
+          .kostum-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        }
         @media (max-width: 1100px) {
-          .catalog-wrap { padding: 60px 32px 80px; }
-          .kostum-grid { gap: 24px; }
+          .catalog-wrap { padding: 52px 32px 72px; }
         }
         @media (max-width: 900px) {
-          .kostum-grid { grid-template-columns: repeat(2, 1fr); }
-          .modal { grid-template-columns: 1fr; max-width: 520px; }
-          .modal-img { aspect-ratio: 5 / 4; }
-          .modal-body { padding: 30px 28px; }
+          .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+          .modal { grid-template-columns: 1fr; max-width: 440px; height: auto; max-height: 90vh; overflow-y: auto; }
+          .modal-img { height: 52vw; max-height: 300px; min-height: 200px; }
+          .modal-body { padding: 24px 22px; height: auto; overflow-y: visible; }
         }
         @media (max-width: 768px) {
-          .page-hero { padding: 0 24px; height: 45vh; }
-          .catalog-wrap { padding: 40px 24px 60px; }
-          .filter-btn { padding: 8px 14px; font-size: 9px; letter-spacing: 0.1em; }
-          .kostum-grid { gap: 20px; }
-          .kostum-name { font-size: 20px; }
+          .page-hero { padding: 0 20px; height: auto; min-height: unset; padding-top: 110px; padding-bottom: 48px; }
+          .catalog-wrap { padding: 36px 20px 56px; }
+          .filter-btn { padding: 8px 13px; font-size: 9px; }
+          .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+          .kostum-name { font-size: 16px; }
+          .kostum-body { padding: 13px 14px 16px; }
+          .cta-strip { padding: 64px 20px; }
         }
-        @media (max-width: 540px) {
-          .kostum-grid { grid-template-columns: 1fr; gap: 24px; }
-          .modal { border-radius: 0; max-height: 100vh; }
-          .modal-body { padding: 24px 20px; }
-          .modal-name { font-size: 26px; }
+        @media (max-width: 480px) {
+          .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .kostum-name { font-size: 14px; }
+          .kostum-body { padding: 10px 12px 14px; }
+          .modal-body { padding: 18px 16px; }
+          .modal-name { font-size: 24px; }
         }
       `}</style>
     </main>
