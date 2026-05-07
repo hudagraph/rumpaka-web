@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -164,15 +164,6 @@ export default function Kostum() {
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState<typeof KOSTUM_DATA[0] | null>(null);
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
   const filtered = useMemo(() => {
     return filter === 'all' ? KOSTUM_DATA : KOSTUM_DATA.filter(item => item.cat === filter);
   }, [filter]);
@@ -221,8 +212,13 @@ export default function Kostum() {
           ))}
         </div>
 
+        <div className="swipe-hint kostum-hint" aria-hidden="true">
+          <span className="sh-line" />
+          Geser untuk melihat ➔
+        </div>
+
         {/* GRID */}
-        <div className="kostum-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? '12px' : '18px' }}>
+        <div className="kostum-grid">
           <AnimatePresence mode="popLayout">
             {filtered.map(item => (
               <motion.button
@@ -238,13 +234,6 @@ export default function Kostum() {
                   className="kostum-img"
                   style={{
                     backgroundImage: `url("${item.img}")`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    width: '100%',
-                    height: isMobile ? '180px' : '260px',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    flexShrink: 0,
                   }}
                 >
                   <span className="kostum-tag">{item.catLabel}</span>
@@ -304,33 +293,13 @@ export default function Kostum() {
                animate={{ scale: 1, opacity: 1 }}
                exit={{ scale: 0.94, opacity: 0 }}
                className="modal"
-               style={{
-                 position: 'relative', zIndex: 1,
-                 display: 'grid',
-                 gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-                 gridTemplateRows: isMobile ? 'auto 1fr' : undefined,
-                 height: isMobile ? 'auto' : 'min(88vh, 640px)',
-                 maxHeight: isMobile ? '92vh' : undefined,
-                 overflowY: isMobile ? 'auto' : 'hidden',
-                 alignItems: 'stretch',
-               }}
              >
                 <button className="modal-close" onClick={() => setSelected(null)}>
                   <X size={18} />
                 </button>
                 <div
-                  style={{
-                    backgroundImage: `url("${selected.img}")`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    width: '100%',
-                    height: isMobile ? '56vw' : '100%',
-                    minHeight: isMobile ? '220px' : '300px',
-                    maxHeight: isMobile ? '320px' : undefined,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    flexShrink: 0,
-                  }}
+                  className="modal-img-container"
+                  style={{ backgroundImage: `url("${selected.img}")` }}
                 />
                 <div className="modal-body">
                   <div className="modal-cat">{selected.catLabel}</div>
@@ -369,7 +338,7 @@ export default function Kostum() {
 
       <style jsx>{`
         .kostum-page { background: var(--dark); min-height: 100vh; }
-        .page-hero { position: relative; height: 50vh; min-height: 400px; display: flex; align-items: center; padding: 0 50px; overflow: hidden; }
+        .page-hero { position: relative; height: 50vh; min-height: 400px; padding-top: 100px; display: flex; align-items: center; padding: 0 50px; overflow: hidden; }
         .ph-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a1410 0%, #070707 100%); }
         .ph-grain { position: absolute; inset: 0; z-index: 1; opacity: 0.04; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
         .ph-vig { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(7,7,7,0.4) 0%, transparent 40%, rgba(7,7,7,0.9) 100%); }
@@ -377,7 +346,7 @@ export default function Kostum() {
         .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
         .eyebrow .dash { width: 32px; height: 1px; background: var(--gold); }
         .eyebrow span { font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
-        .ph-content h1 { font-family: var(--font-serif); font-size: clamp(48px, 6vw, 84px); font-weight: 900; line-height: 1; color: #fff; letter-spacing: -0.02em; margin-bottom: 24px; }
+        .ph-content h1 { font-family: var(--font-serif); font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1; color: #fff; letter-spacing: -0.02em; margin-bottom: 24px; }
         .ph-content em { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-weight: 700; }
         .ph-content p { font-size: 15px; color: var(--text-mute); max-width: 480px; line-height: 1.7; }
 
@@ -398,10 +367,12 @@ export default function Kostum() {
 
         /* grid — 4 kolom desktop */
         .kostum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .kostum-card { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s, transform 0.35s ease, box-shadow 0.35s ease; display: flex; flex-direction: column; text-align: left; cursor: pointer; }
+        .kostum-card { position: relative; border-radius: 16px; overflow: hidden; background: var(--surface); border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s, transform 0.35s ease, box-shadow 0.35s ease; display: flex; flex-direction: column; text-align: left; cursor: pointer; height: 100%; }
         .kostum-card:hover { border-color: rgba(200,169,110,0.25); transform: translateY(-5px); box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
-        .kostum-img { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.7s ease; }
+        
+        .kostum-img { height: 260px; position: relative; overflow: hidden; background-size: cover; background-position: center; width: 100%; flex-shrink: 0; transition: transform 0.7s ease; }
         .kostum-card:hover .kostum-img { transform: scale(1.04); }
+        
         .kostum-tag { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(7,7,7,0.7); backdrop-filter: blur(8px); border: 1px solid var(--gold-dim); font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); z-index: 2; }
         .kostum-status { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(7,7,7,0.7); backdrop-filter: blur(8px); font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; z-index: 2; }
         .kostum-status.sewa { color: #7ab050; border: 1px solid rgba(122,176,80,0.4); }
@@ -414,7 +385,7 @@ export default function Kostum() {
         .kostum-prices { display: flex; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: auto; }
         .price { flex: 1; }
         .price-lbl { font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 3px; }
-        .price-val { font-family: var(--font-serif); font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+        .price-val { font-family: var(--font-serif); font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; height: 18px; display: flex; align-items: center; }
         .price-val .cur { font-size: 10px; font-weight: 500; color: var(--text-mute); margin-right: 2px; }
         .price-empty { font-size: 12px; color: var(--text-soft); font-style: italic; }
 
@@ -428,9 +399,24 @@ export default function Kostum() {
 
         /* modal */
         .modal-overlay { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; padding: 24px; }
-        .modal { background: var(--surface); border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; max-width: 860px; width: 100%; height: min(88vh, 640px); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0; box-shadow: 0 50px 120px rgba(0,0,0,0.8); }
-        .modal-img { position: relative; overflow: hidden; }
-        .modal-body { padding: 28px 28px 28px 24px; display: flex; flex-direction: column; overflow-y: auto; min-height: 0; }
+        
+        /* MODAL CSS LAYOUT */
+        .modal { 
+          position: relative; z-index: 1;
+          background: var(--surface); 
+          border: 1px solid rgba(255,255,255,0.09); 
+          border-radius: 20px; max-width: 860px; width: 100%; 
+          box-shadow: 0 50px 120px rgba(0,0,0,0.8); 
+          display: flex; flex-direction: row;
+          height: min(88vh, 640px);
+          overflow: hidden;
+        }
+        .modal-img-container { 
+          position: relative; overflow: hidden; 
+          width: 50%; height: 100%; flex-shrink: 0;
+          background-size: cover; background-position: center;
+        }
+        .modal-body { width: 50%; padding: 28px 28px 28px 24px; display: flex; flex-direction: column; overflow-y: auto; }
         .modal-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(7,7,7,0.7); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3; color: #fff; cursor: pointer; }
         .modal-cat { font-size: 9px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
         .modal-name { font-family: var(--font-serif); font-size: 26px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; color: #fff; }
@@ -447,24 +433,51 @@ export default function Kostum() {
         }
         @media (max-width: 1100px) {
           .catalog-wrap { padding: 52px 32px 72px; }
+          .page-hero { padding-top: 100px; }
         }
         @media (max-width: 900px) {
           .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-          .modal { grid-template-columns: 1fr; max-width: 440px; height: auto; max-height: 90vh; overflow-y: auto; }
-          .modal-img { height: 52vw; max-height: 300px; min-height: 200px; }
-          .modal-body { padding: 24px 22px; height: auto; overflow-y: visible; }
+          .modal { flex-direction: column; max-width: 440px; height: 90vh; }
+          .modal-img-container { width: 100%; height: 35vh; min-height: 200px; }
+          .modal-body { width: 100%; padding: 24px 22px; height: auto; flex: 1; }
         }
         @media (max-width: 768px) {
-          .page-hero { padding: 0 20px; height: auto; min-height: unset; padding-top: 110px; padding-bottom: 48px; }
-          .catalog-wrap { padding: 36px 20px 56px; }
+          .page-hero { padding: 0 20px; height: auto; min-height: unset; padding-top: 130px; padding-bottom: 48px; }
+          .catalog-wrap { padding: 36px 20px 56px; position: relative; }
           .filter-btn { padding: 8px 13px; font-size: 9px; }
-          .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+          
+          /* SWIPE HINT */
+          .swipe-hint {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 8.5px; font-weight: 700; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 12px; margin-left: 4px;
+          }
+          .sh-line { width: 14px; height: 1px; background: var(--gold); }
+
+          /* MOBILE CAROUSEL FOR KOSTUM GRID */
+          .kostum-grid { 
+            display: flex; 
+            flex-wrap: nowrap; 
+            overflow-x: auto; 
+            align-items: stretch;
+            scroll-snap-type: x mandatory; 
+            gap: 12px; 
+            padding-bottom: 24px; /* Space for scrollbar or shadow */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .kostum-grid::-webkit-scrollbar { display: none; }
+          .kostum-card { flex: 0 0 260px; scroll-snap-align: center; height: auto; }
+          .kostum-img { height: 220px; }
+          
           .kostum-name { font-size: 16px; }
           .kostum-body { padding: 13px 14px 16px; }
           .cta-strip { padding: 64px 20px; }
         }
         @media (max-width: 480px) {
-          .kostum-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .kostum-card { flex: 0 0 220px; }
+          .kostum-img { height: 180px; }
           .kostum-name { font-size: 14px; }
           .kostum-body { padding: 10px 12px 14px; }
           .modal-body { padding: 18px 16px; }

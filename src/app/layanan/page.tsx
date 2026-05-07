@@ -164,8 +164,8 @@ export default function Layanan() {
       <style jsx>{`
         .page-hero {
           position: relative;
-          height: 60vh;
-          min-height: 480px;
+          height: 45vh;
+          min-height: 400px;
           display: flex;
           align-items: center;
           padding: 0px 50px;
@@ -193,7 +193,7 @@ export default function Layanan() {
         .ph-content p { font-size: 15px; color: var(--text-mute); max-width: 480px; line-height: 1.7; }
 
         /* ── SERVICE GRID ── */
-        .svc-wrap { padding: 64px 50px 96px; max-width: 1400px; margin: 0 auto; }
+        .svc-wrap { padding: 32px 50px 96px; max-width: 1400px; margin: 0 auto; }
         .svc-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -246,7 +246,7 @@ export default function Layanan() {
         /* responsive */
         @media (max-width: 1100px) {
           .page-hero { padding: 0 32px; }
-          .svc-wrap { padding: 48px 32px 72px; }
+          .svc-wrap { padding: 24px 32px 72px; }
           .svc-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
           .stats { padding: 56px 32px; }
           .stats-inner { grid-template-columns: repeat(2, 1fr); }

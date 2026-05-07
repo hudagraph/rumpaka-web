@@ -137,7 +137,7 @@ export default function Navbar() {
         .nav {
           position: fixed;
           top: 0; left: 0; right: 0;
-          z-index: 200;
+          z-index: 1000;
           display: flex;
           align-items: center;
           justify-content: space-between;

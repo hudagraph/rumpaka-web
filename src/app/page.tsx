@@ -4,13 +4,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const SLIDES = [
   {
     num: "01",
     cat: "Jasa Pertunjukan",
     title: ["SENI", "PANGGUNG"],
-    desc: "Persembahan tari tradisional Sunda yang memukau untuk pernikahan adat, penyambutan tamu kehormatan, dan perayaan budaya nusantara.",
+    desc: "Persembahan tari tradisional yang memukau untuk pernikahan, penyambutan tamu kehormatan, dan perayaan budaya.",
     href: "/layanan",
     tone: "linear-gradient(135deg,#1a0800,#4a1500,#7a2800)",
     accent: "#c47b3a",
@@ -49,19 +50,12 @@ const SLIDES = [
 ];
 
 const CINZEL = 'var(--font-cinzel), "Cinzel", Georgia, serif';
-
-// ── UTAK-ATIK HEADLINE DI SINI ──────────────────────────────
-// clamp(UKURAN_HP, UKURAN_SKALA_LAYAR, UKURAN_DESKTOP_BESAR)
-const HEADLINE_SIZE = 'clamp(50px, 9.8vw, 100px)';
-// ────────────────────────────────────────────────────────────
-
-// ── POSISI KONTEN KIRI (naik/turun) ─────────────────────────
-// 0 = paling atas, 50vh = tengah layar, 30vh = agak ke bawah
-const CONTENT_TOP = '53vh';
-// ────────────────────────────────────────────────────────────
+const HEADLINE_SIZE = 'clamp(44px, 9.8vw, 100px)';
+const CONTENT_TOP = '50vh';
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % SLIDES.length);
@@ -71,27 +65,57 @@ export default function Home() {
     setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
   }, []);
 
-  // Reset interval setiap slide berubah — baik manual maupun auto
-  // supaya urutan counter selalu konsisten dan tidak melompat
   useEffect(() => {
-    const timer = setInterval(nextSlide, 7000);
+    if (isPaused) return;
+    const timer = setInterval(nextSlide, 10000);
     return () => clearInterval(timer);
-  }, [nextSlide, current]);
+  }, [nextSlide, current, isPaused]);
+
+  // Animasi huruf split-text
+  const splitText = (text: string, wordIndex: number) => {
+    return text.split('').map((char, i) => (
+      <motion.span
+        key={`${wordIndex}-${i}`}
+        initial={{ y: '120%', rotate: 15, opacity: 0 }}
+        animate={{ y: 0, rotate: 0, opacity: 1 }}
+        transition={{ delay: 0.1 + wordIndex * 0.1 + i * 0.04, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+        style={{ display: 'inline-block', whiteSpace: 'pre' }}
+      >
+        {char}
+      </motion.span>
+    ));
+  };
 
   return (
     <main className="hero-page">
-      <section className="hero">
+      <section 
+        className="hero"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
 
         {/* ── BACKGROUND ── */}
         <div className="bg-wrap">
           <div className="bg-tone" style={{ background: SLIDES[current].tone }} />
-          {SLIDES.map((slide, i) => (
-            <div
-              key={i}
-              className={`bg-img${i === current ? ' is-active' : ''}`}
-              style={{ backgroundImage: `url("${slide.img}")` }}
-            />
-          ))}
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={current}
+              initial={{ clipPath: 'inset(0 100% 0 0)', scale: 1.05 }}
+              animate={{ clipPath: 'inset(0 0% 0 0)', scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98, transition: { duration: 1.2 } }}
+              transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+              className="bg-img"
+              style={{ zIndex: 1 }}
+            >
+              <Image 
+                src={SLIDES[current].img} 
+                alt={SLIDES[current].title.join(' ')}
+                fill
+                priority
+                style={{ objectFit: 'cover' }}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
         <div className="grain" aria-hidden="true" />
         <div className="vig"  aria-hidden="true" />
@@ -100,10 +124,10 @@ export default function Home() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`ghost-${current}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9 }}
+            initial={{ opacity: 0, x: -50, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 50, scale: 1.05 }}
+            transition={{ duration: 1.2, ease: [0.215, 0.61, 0.355, 1] }}
             className="ghost"
             style={{ fontFamily: CINZEL }}
           >
@@ -113,34 +137,28 @@ export default function Home() {
 
         {/* ── LEFT CONTENT ── */}
         <div className="content">
-          <div className="txt" style={{ paddingTop: CONTENT_TOP }}>
+          <div className="txt" style={{ paddingTop: CONTENT_TOP, transform: 'translateY(-50%)' }}>
             {/* Category label */}
             <motion.div
               key={`cat-${current}`}
-              initial={{ opacity: 0, x: -16 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="s-cat"
             >
               <span className="dash" style={{ background: SLIDES[current].accent }} />
-              <span className="lbl"  style={{ color:      SLIDES[current].accent }}>
+              <span className="lbl"  style={{ color: SLIDES[current].accent }}>
                 {SLIDES[current].cat}
               </span>
             </motion.div>
 
-            {/* Big headline */}
+            {/* Big headline with split text */}
             <div className="s-title">
               {SLIDES[current].title.map((word, i) => (
                 <div key={`${current}-t-${i}`} className="ln">
-                  <motion.span
-                    initial={{ y: '105%' }}
-                    animate={{ y: 0 }}
-                    transition={{ delay: 0.12 + i * 0.09, duration: 0.72, ease: [0.76, 0, 0.24, 1] }}
-                    className="ln-in"
-                    style={{ fontFamily: CINZEL, fontSize: HEADLINE_SIZE }}
-                  >
-                    {word}
-                  </motion.span>
+                  <div className="ln-in" style={{ fontFamily: CINZEL, fontSize: HEADLINE_SIZE }}>
+                    {splitText(word, i)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -148,9 +166,9 @@ export default function Home() {
             {/* Description */}
             <motion.p
               key={`desc-${current}`}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.42, duration: 0.5 }}
+              transition={{ delay: 0.4, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
               className="s-desc"
             >
               {SLIDES[current].desc}
@@ -159,9 +177,9 @@ export default function Home() {
             {/* CTA */}
             <motion.div
               key={`acts-${current}`}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.52, duration: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
               className="s-acts"
               style={{ marginTop: '20px' }}
             >
@@ -189,9 +207,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── RIGHT: 3 CARDS (last one cut off) ── */}
-        <div className="cards-zone">
-          <div className="cards-row">
+        {/* ── RIGHT/BOTTOM CARDS ── */}
+        <div className="cards-wrapper">
+          <div className="swipe-hint" aria-hidden="true">
+            <span className="sh-line" />
+            Geser untuk melihat ➔
+          </div>
+          <div className="cards-zone">
+            <div className="cards-row">
             {SLIDES.map((s, i) => {
               if (i === current) return null;
               return (
@@ -201,7 +224,9 @@ export default function Home() {
                   className="card"
                   aria-label={`Lihat ${s.title.join(' ')}`}
                 >
-                  <div className="card-img"  style={{ backgroundImage: `url("${s.img}")` }} />
+                  <div className="card-img-wrap">
+                    <Image src={s.img} alt="" fill sizes="280px" style={{ objectFit: 'cover' }} className="card-img" />
+                  </div>
                   <div className="card-shade" />
                   <div className="play-btn">
                     <Play size={14} fill="white" />
@@ -217,8 +242,9 @@ export default function Home() {
             })}
           </div>
         </div>
+        </div>
 
-        {/* ── BOTTOM CONTROLS (below cards, right half) ── */}
+        {/* ── BOTTOM CONTROLS ── */}
         <div className="controls">
           <div className="arr-g">
             <button onClick={prevSlide} className="arr" aria-label="Slide sebelumnya">
@@ -277,12 +303,7 @@ export default function Home() {
         }
         .bg-img {
           position: absolute; inset: 0; z-index: 1;
-          background-size: cover; background-position: center;
-          opacity: 0; transform: scale(1.05);
-          transition: opacity 1.4s cubic-bezier(0.76,0,0.24,1),
-                      transform 1.4s cubic-bezier(0.76,0,0.24,1);
         }
-        .bg-img.is-active { opacity: 1; transform: scale(1); }
 
         .grain {
           position: absolute; inset: 0; z-index: 1;
@@ -323,13 +344,12 @@ export default function Home() {
           width: 50%;
           z-index: 10;
           display: flex;
-          align-items: flex-start; /* posisi dikontrol via CONTENT_TOP */
+          align-items: flex-start;
           padding: 0 54px;
-          overflow: hidden;
+          overflow: visible;
         }
-        .txt { width: 100%; }
+        .txt { width: 100%; position: relative; }
 
-        /* Label kategori — eyebrow text di atas headline */
         .s-cat {
           display: flex; align-items: center;
           gap: 16px; margin-bottom: 20px;
@@ -340,12 +360,10 @@ export default function Home() {
           letter-spacing: 0.34em; text-transform: uppercase;
         }
 
-        /* Headline utama */
         .s-title { margin-bottom: 0; }
-        .s-title .ln    { display: block; overflow: hidden; line-height: 1; }
+        .s-title .ln    { display: block; overflow: hidden; line-height: 1; padding-bottom: 10px; margin-bottom: -10px; }
         .s-title .ln-in {
           display: block;
-          /* font-size & fontFamily di-set via inline style (const HEADLINE_SIZE & CINZEL) */
           font-weight: 900;
           color: #fff;
           letter-spacing: 0.04em;
@@ -355,16 +373,15 @@ export default function Home() {
         }
 
         .s-desc {
-          font-size: 13px; line-height: 1.82;
+          font-size: 10px; line-height: 1.82;
           color: var(--text-mute);
           max-width: 380px;
-          margin: 22px 0 80px;
+          margin: 22px 0 60px;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
-        /* CTA satu baris: ▶ Jelajahi Lebih */
         .s-acts { display: flex; align-items: center; }
         .btn-cta {
-          /* layout kritis di-set via inline style agar pasti terapply ke <Link> */
           padding: 16px 36px 16px 28px;
           border-radius: 100px;
           color: #fff;
@@ -376,15 +393,20 @@ export default function Home() {
         .btn-cta:hover { transform: scale(1.06); }
 
         /* ── RIGHT CARDS ZONE ── */
-        .cards-zone {
+        .cards-wrapper {
           position: absolute;
           left: 50%; top: 0; bottom: 90px;
-          right: -90px; /* overflow: kartu ketiga terpotong di kanan */
+          right: -90px;
           z-index: 20;
           display: flex;
-          align-items: flex-end; /* turun ke bawah, dekat navigasi */
+          align-items: flex-end;
+        }
+        .cards-zone {
+          display: flex;
+          align-items: flex-end;
           padding-left: 20px;
           padding-bottom: 18px;
+          width: 100%;
         }
         .cards-row { display: flex; gap: 16px; }
 
@@ -398,17 +420,18 @@ export default function Home() {
           text-align: left;
           transition: transform 0.45s cubic-bezier(0.34,1.2,0.64,1),
                       box-shadow 0.45s ease;
+          cursor: none; /* Custom cursor */
         }
         .card:hover {
           transform: translateY(-7px) scale(1.025);
           box-shadow: 0 28px 70px rgba(0,0,0,0.55);
         }
-        .card-img {
+        .card-img-wrap {
           position: absolute; inset: 0;
-          background-size: cover; background-position: center;
           transition: transform 0.5s ease;
         }
-        .card:hover .card-img { transform: scale(1.04); }
+        .card:hover .card-img-wrap { transform: scale(1.04); }
+        
         .card-shade {
           position: absolute; inset: 0;
           background: linear-gradient(to top,
@@ -439,14 +462,13 @@ export default function Home() {
           margin-bottom: 6px;
         }
         .card-name {
-          /* fontFamily set via inline style — Cinzel */
           font-size: 15px; font-weight: 900;
           color: #fff; line-height: 1.12;
           white-space: pre-line;
           letter-spacing: 0.04em; text-transform: uppercase;
         }
 
-        /* ── BOTTOM CONTROLS (below cards, anchored right half) ── */
+        /* ── BOTTOM CONTROLS ── */
         .controls {
           position: absolute;
           bottom: 26px;
@@ -467,6 +489,7 @@ export default function Home() {
           display: flex; align-items: center; justify-content: center;
           color: rgba(255,255,255,0.72);
           transition: border-color 0.3s, background 0.3s, color 0.3s;
+          cursor: none;
         }
         .arr:hover {
           border-color: var(--gold-dim);
@@ -497,22 +520,58 @@ export default function Home() {
           .card       { flex: 0 0 200px; }
         }
         @media (max-width: 768px) {
-          .cards-zone { display: none; }
           .content    {
             width: 100%;
-            align-items: flex-end;
-            padding: 0 24px 110px;
+            align-items: flex-start;
+            padding: 100px 24px 0;
             bottom: 0;
+            z-index: 10;
           }
+          .txt { transform: translateY(0) !important; padding-top: 0 !important; }
           .s-cat .lbl     { font-size: 10px; }
-          .s-title .ln-in { font-size: clamp(50px, 14vw, 84px); }
-          .s-desc         { max-width: 92%; }
-          .controls       { left: 24px; right: 24px; padding-left: 0; }
+          .s-title .ln-in { font-size: clamp(24px, 7vw, 64px) !important; }
+          .s-desc { max-width: 80%; margin-bottom: 20px; font-size: 12px; line-height: 1.2; transform: scale(0.65); transform-origin: left top; }
+          
+          .controls       { left: 24px; right: 24px; padding-left: 0; bottom: 20px; }
           .ghost          { font-size: clamp(86px, 28vw, 148px); }
+
+          /* MOBILE CAROUSEL */
+          .cards-wrapper {
+            position: absolute;
+            left: 0; right: 0; bottom: 84px;
+            width: 100%;
+            z-index: 20;
+          }
+          .swipe-hint {
+            display: flex; align-items: center; gap: 6px;
+            position: absolute; top: -24px; right: 24px;
+            font-size: 8.5px; font-weight: 700; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.15em;
+            z-index: 10;
+          }
+          .sh-line { width: 14px; height: 1px; background: var(--gold); }
+          .cards-zone {
+            width: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: flex-end;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+          }
+          .cards-zone::-webkit-scrollbar { display: none; } /* Chrome */
+          .cards-row { gap: 12px; padding-right: 24px; } /* padding for last card scroll */
+          .card { 
+            flex: 0 0 180px; 
+            height: 180px; 
+            scroll-snap-align: center; 
+          }
         }
         @media (max-width: 380px) {
-          .s-desc   { font-size: 12px; line-height: 1.65; }
-          .btn-more { padding: 10px 18px; font-size: 9px; }
+          .s-desc   { font-size: 5px; line-height: 1.2; margin-bottom: 12px; }
+          .btn-cta { padding: 12px 20px; font-size: 10px; }
+          .card { flex: 0 0 160px; height: 160px; }
         }
       `}</style>
     </main>

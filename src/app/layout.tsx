@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroller from "@/components/SmoothScroller";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#070707" />
       </head>
       <body>
+        <SmoothScroller />
         <CustomCursor />
         <Navbar />
         {children}
