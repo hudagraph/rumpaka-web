@@ -5,6 +5,7 @@
 /* ── PAGE HERO (sub-pages) ── */
 .page-hero {
   position: relative;
+  margin-top: 88px; /* clear the fixed navbar */
   height: 52vh;
   min-height: 360px;
   overflow: hidden;
@@ -299,6 +300,7 @@
 }
 @media (max-width: 768px) {
   .page-hero {
+    margin-top: 70px;
     padding: 0 20px 44px;
     height: 46vh;
     min-height: 300px;

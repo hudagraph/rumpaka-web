@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+
+    <title>Art School — Sekolah Tari Sunda | Annisa Rumpaka</title>
+    <meta name="description" content="Annisa Rumpaka Art School — sekolah tari Sunda untuk anak hingga dewasa di Bandung. Program reguler, intensif, dan privat dengan pengajar bersertifikat sejak 2003." />
+    <link rel="canonical" href="https://annisarumpaka.com/art-school.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Art School — Annisa Rumpaka" />
+    <meta property="og:description" content="Sekolah tari Sunda di Bandung — anak hingga dewasa." />
+    <meta property="og:url" content="https://annisarumpaka.com/art-school.html" />
+    <meta property="og:image" content="https://annisarumpaka.com/assets/og-image.svg" />
+    <meta property="og:locale" content="id_ID" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Art School — Annisa Rumpaka" />
+    <meta name="twitter:image" content="https://annisarumpaka.com/assets/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      /* ── PAGE: ART SCHOOL ── */
+
+      /* PROGRAM CARDS */
+      .programs {
+        padding: 100px 50px 60px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .section-head {
+        max-width: 660px;
+        margin-bottom: 56px;
+      }
+      .section-head h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 4vw, 50px);
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        line-height: 1.05;
+        margin-bottom: 20px;
+      }
+      .section-head h2 em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .section-head p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text-mute);
+        text-wrap: pretty;
+      }
+
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+      }
+
+      .prog-card {
+        position: relative;
+        padding: 34px 30px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 22px;
+        background: var(--surface-2);
+        transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.4s;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .prog-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(120% 80% at 100% 0%, var(--gold-glow), transparent 60%);
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+      }
+      .prog-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold-dim);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+      }
+      .prog-card:hover::before { opacity: 1; }
+
+      .prog-card.featured {
+        background: linear-gradient(180deg, rgba(200, 169, 110, 0.08) 0%, var(--surface-2) 60%);
+        border-color: var(--gold-dim);
+      }
+      .prog-badge {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        padding: 5px 12px;
+        border-radius: 100px;
+        background: var(--gold);
+        color: #070707;
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .prog-num {
+        font-family: "Playfair Display", serif;
+        font-size: 50px;
+        font-weight: 900;
+        color: rgba(200, 169, 110, 0.18);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        margin-bottom: 24px;
+      }
+      .prog-title {
+        font-family: "Playfair Display", serif;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-bottom: 8px;
+      }
+      .prog-sub {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+      }
+      .prog-desc {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-mute);
+        margin-bottom: 22px;
+        flex: 1;
+      }
+      .prog-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .prog-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--text);
+      }
+      .prog-list li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: var(--gold);
+        border-radius: 50%;
+        margin-top: 7px;
+        flex-shrink: 0;
+      }
+      .prog-foot {
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .prog-price {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1;
+      }
+      .prog-price .cur {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-mute);
+      }
+      .prog-price-unit {
+        font-size: 10px;
+        color: var(--text-soft);
+        margin-top: 4px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+      .prog-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        text-decoration: none;
+        padding: 10px 16px;
+        border: 1px solid var(--gold-dim);
+        border-radius: 100px;
+        transition: background 0.3s, border-color 0.3s;
+      }
+      .prog-cta:hover {
+        background: var(--gold);
+        color: #070707;
+        border-color: var(--gold);
+      }
+      .prog-cta svg {
+        width: 11px; height: 11px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* CURRICULUM */
+      .curriculum {
+        padding: 80px 50px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .curr-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      .curr-side h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(28px, 3vw, 42px);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .curr-side h2 em { font-style: italic; color: var(--gold); }
+      .curr-side p {
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--text-mute);
+        margin-bottom: 26px;
+        text-wrap: pretty;
+      }
+
+      .curr-stages {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .stage {
+        display: flex;
+        gap: 22px;
+        padding: 22px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 16px;
+        background: var(--glass);
+        backdrop-filter: blur(8px);
+        transition: border-color 0.3s, background 0.3s;
+      }
+      .stage:hover {
+        border-color: var(--gold-dim);
+        background: var(--gold-glow);
+      }
+      .stage-num {
+        flex-shrink: 0;
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--gold-dim);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--gold);
+      }
+      .stage-name {
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .stage-age {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .stage-desc {
+        font-size: 12.5px;
+        line-height: 1.65;
+        color: var(--text-mute);
+      }
+
+      /* INSTRUCTORS */
+      .instructors {
+        padding: 80px 50px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .inst-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .inst-card {
+        padding: 28px 24px 26px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 18px;
+        background: var(--surface-2);
+        text-align: center;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+      .inst-card:hover {
+        border-color: var(--gold-dim);
+        transform: translateY(-4px);
+      }
+      .inst-photo {
+        width: 90px; height: 90px;
+        border-radius: 50%;
+        background: var(--surface-3);
+        border: 1px solid var(--gold-dim);
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--gold);
+        background: var(--gold-glow);
+      }
+      .inst-name {
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .inst-role {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+      }
+      .inst-bio {
+        font-size: 11.5px;
+        line-height: 1.6;
+        color: var(--text-mute);
+      }
+
+      /* FAQ */
+      .faq-section {
+        padding: 80px 50px 100px;
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 36px;
+      }
+      .faq-item {
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 14px;
+        background: var(--glass);
+        overflow: hidden;
+        transition: border-color 0.3s;
+      }
+      .faq-item[open] { border-color: var(--gold-dim); }
+      .faq-q {
+        padding: 20px 24px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        cursor: none;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        outline: none;
+      }
+      .faq-q::-webkit-details-marker { display: none; }
+      .faq-q:focus-visible {
+        background: var(--gold-glow);
+      }
+      .faq-q::after {
+        content: "+";
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        color: var(--gold);
+        font-weight: 300;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .faq-item[open] .faq-q::after {
+        content: "−";
+      }
+      .faq-a {
+        padding: 0 24px 22px;
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--text-mute);
+        text-wrap: pretty;
+      }
+
+      @media (max-width: 1100px) {
+        .programs, .curriculum, .instructors, .faq-section { padding-left: 32px; padding-right: 32px; }
+        .programs-grid { gap: 22px; }
+        .inst-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 900px) {
+        .programs-grid { grid-template-columns: 1fr; }
+        .curr-grid { grid-template-columns: 1fr; gap: 40px; }
+      }
+      @media (max-width: 768px) {
+        .programs, .curriculum, .instructors, .faq-section { padding-left: 20px; padding-right: 20px; }
+        .programs { padding-top: 70px; }
+        .inst-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+
+    <div id="cur" aria-hidden="true"></div>
+    <div id="ring" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="index.html" class="logo" aria-label="Annisa Rumpaka — Beranda">
+        <img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan</a></li>
+        <li><a href="kostum.html">Arum Kostum</a></li>
+        <li><a href="art-school.html" class="act" aria-current="page">Art School</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="nav-r">
+        <button class="icon-b" type="button" aria-label="Cari">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+        <a href="kontak.html" class="cta-b">Daftar Sekarang</a>
+        <button class="ham" type="button" id="hamBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu navigasi" aria-hidden="true">
+      <nav class="mob-nav" aria-label="Navigasi mobile">
+        <a href="index.html">Beranda</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="kostum.html">Arum Kostum</a>
+        <a href="art-school.html" class="act" aria-current="page">Art School</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <a href="kontak.html" class="cta-b mob-cta">Daftar Sekarang</a>
+    </div>
+
+    <main id="main">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="page-hero-title">
+        <div class="ph-bg" aria-hidden="true"></div>
+        <div class="ph-grain" aria-hidden="true"></div>
+        <div class="ph-vig" aria-hidden="true"></div>
+        <div class="ph-content">
+          <div class="eyebrow">
+            <span class="dash" aria-hidden="true"></span>
+            <span>Art School</span>
+          </div>
+          <h1 id="page-hero-title">Sekolah<br /><em>Tari Sunda</em></h1>
+          <p>Belajar tari Sunda dari pengajar berpengalaman lebih dari 20 tahun. Program lengkap untuk anak, remaja, hingga dewasa — dari pemula hingga lanjutan.</p>
+        </div>
+      </section>
+
+      <!-- PROGRAMS -->
+      <section class="programs" aria-labelledby="programs-title">
+        <header class="section-head">
+          <h2 id="programs-title">Program <em>Pelatihan</em></h2>
+          <p>Tiga jalur belajar yang dirancang untuk menyesuaikan ritme dan tujuan setiap murid — dari pengenalan dasar hingga persiapan kompetisi profesional.</p>
+        </header>
+
+        <div class="programs-grid">
+          <article class="prog-card">
+            <div class="prog-num">01</div>
+            <div class="prog-sub">8 Sesi · 2 Bulan</div>
+            <h3 class="prog-title">Reguler</h3>
+            <p class="prog-desc">Kelas mingguan dalam kelompok kecil. Cocok untuk yang ingin belajar santai sambil mengenal kebudayaan.</p>
+            <ul class="prog-list">
+              <li>2× pertemuan/minggu (60 menit)</li>
+              <li>Maks. 8 murid per kelas</li>
+              <li>Materi terstruktur per level</li>
+              <li>Sertifikat penyelesaian</li>
+            </ul>
+            <div class="prog-foot">
+              <div>
+                <div class="prog-price"><span class="cur">Rp</span>650K</div>
+                <div class="prog-price-unit">/bulan</div>
+              </div>
+              <a href="kontak.html?topic=artschool&prog=reguler" class="prog-cta">
+                Daftar
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="prog-card featured">
+            <span class="prog-badge">Populer</span>
+            <div class="prog-num">02</div>
+            <div class="prog-sub">12 Sesi · 1 Bulan</div>
+            <h3 class="prog-title">Intensif</h3>
+            <p class="prog-desc">Program akselerasi untuk yang sudah memiliki dasar atau ingin cepat mahir. Frekuensi tinggi dengan materi mendalam.</p>
+            <ul class="prog-list">
+              <li>3× pertemuan/minggu (90 menit)</li>
+              <li>Maks. 6 murid per kelas</li>
+              <li>Praktek panggung mini</li>
+              <li>Sertifikat &amp; rekomendasi</li>
+            </ul>
+            <div class="prog-foot">
+              <div>
+                <div class="prog-price"><span class="cur">Rp</span>1.4Jt</div>
+                <div class="prog-price-unit">/bulan</div>
+              </div>
+              <a href="kontak.html?topic=artschool&prog=intensif" class="prog-cta">
+                Daftar
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="prog-card">
+            <div class="prog-num">03</div>
+            <div class="prog-sub">Fleksibel · Per Sesi</div>
+            <h3 class="prog-title">Privat</h3>
+            <p class="prog-desc">Pelatihan one-on-one dengan kurikulum custom. Ideal untuk persiapan audisi, kompetisi, atau performa khusus.</p>
+            <ul class="prog-list">
+              <li>1-on-1 dengan instruktur senior</li>
+              <li>Jadwal &amp; lokasi fleksibel</li>
+              <li>Materi disesuaikan tujuan</li>
+              <li>Konsultasi karir seni</li>
+            </ul>
+            <div class="prog-foot">
+              <div>
+                <div class="prog-price"><span class="cur">Rp</span>350K</div>
+                <div class="prog-price-unit">/sesi 90 menit</div>
+              </div>
+              <a href="kontak.html?topic=artschool&prog=privat" class="prog-cta">
+                Daftar
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CURRICULUM -->
+      <section class="curriculum" aria-labelledby="curr-title">
+        <div class="curr-grid">
+          <div class="curr-side">
+            <div class="eyebrow">
+              <span class="dash" aria-hidden="true"></span>
+              <span>Kurikulum</span>
+            </div>
+            <h2 id="curr-title">Empat Tahap<br /><em>Penguasaan</em></h2>
+            <p>Kurikulum kami dibagi menjadi empat tahap progresif. Setiap murid menjalani penilaian sebelum naik ke tahap berikutnya — memastikan fondasi yang kokoh sebelum melangkah lebih jauh.</p>
+            <p style="font-size:11.5px;color:var(--text-soft);font-style:italic;">"Tari bukan sekadar gerak — ia adalah cara tubuh memahami sejarah."</p>
+          </div>
+
+          <div class="curr-stages">
+            <div class="stage">
+              <div class="stage-num">1</div>
+              <div>
+                <div class="stage-name">Pengenalan</div>
+                <div class="stage-age">5+ Tahun · Pemula</div>
+                <p class="stage-desc">Pengenalan postur dasar, ritme gendang, dan gerakan tangan utama. Fokus pada kepercayaan diri dan kecintaan terhadap seni Sunda.</p>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-num">2</div>
+              <div>
+                <div class="stage-name">Dasar</div>
+                <div class="stage-age">Lanjutan Pemula</div>
+                <p class="stage-desc">Penguasaan tari pendek seperti Kembang Tanjung. Latihan koordinasi tangan-kaki, ekspresi wajah, dan musikalitas.</p>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-num">3</div>
+              <div>
+                <div class="stage-name">Menengah</div>
+                <div class="stage-age">Intermediate</div>
+                <p class="stage-desc">Tari berdurasi penuh seperti Jaipong dan Ronggeng. Pemahaman teori budaya, sejarah, dan karakter tari.</p>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-num">4</div>
+              <div>
+                <div class="stage-name">Mahir</div>
+                <div class="stage-age">Advanced</div>
+                <p class="stage-desc">Tari klasik kompleks seperti Tari Merak dan Topeng. Persiapan panggung profesional, kompetisi, dan koreografi mandiri.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSTRUCTORS -->
+      <section class="instructors" aria-labelledby="inst-title">
+        <header class="section-head">
+          <h2 id="inst-title">Tim <em>Pengajar</em></h2>
+          <p>Pengajar bersertifikat dengan pengalaman panggung nasional dan internasional. Setiap instruktur fokus pada bidang keahliannya masing-masing.</p>
+        </header>
+
+        <div class="inst-grid">
+          <div class="inst-card">
+            <div class="inst-photo" aria-hidden="true">AR</div>
+            <div class="inst-name">Annisa R.</div>
+            <div class="inst-role">Founder · Klasik</div>
+            <p class="inst-bio">Maestro tari klasik Sunda dengan 25+ tahun pengalaman. Lulusan ISBI Bandung.</p>
+          </div>
+          <div class="inst-card">
+            <div class="inst-photo" aria-hidden="true">DM</div>
+            <div class="inst-name">Dewi M.</div>
+            <div class="inst-role">Tari Anak</div>
+            <p class="inst-bio">Spesialis pedagogi anak. Berpengalaman mengajar 15 tahun di sekolah dasar &amp; menengah.</p>
+          </div>
+          <div class="inst-card">
+            <div class="inst-photo" aria-hidden="true">RS</div>
+            <div class="inst-name">Rinda S.</div>
+            <div class="inst-role">Tari Kreasi</div>
+            <p class="inst-bio">Koreografer aktif yang menggabungkan tari Sunda dengan unsur kontemporer.</p>
+          </div>
+          <div class="inst-card">
+            <div class="inst-photo" aria-hidden="true">BP</div>
+            <div class="inst-name">Bagas P.</div>
+            <div class="inst-role">Topeng &amp; Wayang</div>
+            <p class="inst-bio">Spesialis tari topeng tradisional. Pernah tampil di festival Asia Tenggara.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" aria-labelledby="faq-title">
+        <header class="section-head" style="margin-bottom: 0;">
+          <h2 id="faq-title">Pertanyaan <em>Umum</em></h2>
+          <p>Hal-hal yang sering ditanyakan calon murid dan orang tua.</p>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-q">Apakah harus memiliki pengalaman menari sebelumnya?</summary>
+            <div class="faq-a">Tidak. Program Reguler kami dirancang untuk pemula total. Kami akan memulai dari postur, pernapasan, dan gerakan dasar terlebih dahulu — semua orang dapat mengikuti.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Berapa usia minimum untuk mendaftar?</summary>
+            <div class="faq-a">Kelas anak dimulai dari usia 5 tahun (kelas Pengenalan). Untuk dewasa, tidak ada batas usia atas — kami memiliki murid hingga usia 60+.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Apakah disediakan kostum saat pertunjukan?</summary>
+            <div class="faq-a">Ya. Murid mendapatkan akses sewa khusus dari Arum Kostum dengan harga khusus pelajar untuk pertunjukan akhir program dan pentas tahunan.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Bagaimana sistem kenaikan tahap?</summary>
+            <div class="faq-a">Setiap tahap memiliki ujian akhir berupa peragaan tari. Penilaian mencakup teknik, ekspresi, musikalitas, dan konsistensi. Murid yang lulus mendapat sertifikat dan dapat mendaftar tahap berikutnya.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Apakah ada kelas trial sebelum mendaftar?</summary>
+            <div class="faq-a">Ya. Kami menyediakan satu sesi trial gratis untuk calon murid baru. Hubungi kami via WhatsApp untuk menjadwalkan.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Di mana lokasi sekolahnya?</summary>
+            <div class="faq-a">Studio utama berada di Bandung, Jawa Barat. Kelas privat dapat diadakan di lokasi murid (dalam kota Bandung) dengan biaya transportasi tambahan.</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="cta-strip">
+        <div class="cta-inner">
+          <h2>Siap Memulai<br /><em>Perjalananmu?</em></h2>
+          <p>Daftar sesi trial gratis untuk merasakan kelas kami secara langsung — tanpa biaya, tanpa komitmen.</p>
+          <a href="kontak.html?topic=artschool&trial=1" class="btn-gold">
+            Daftar Trial Gratis
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" />
+          </a>
+          <p class="footer-tagline">Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigasi</div>
+          <ul class="footer-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="kostum.html">Arum Kostum</a></li>
+            <li><a href="art-school.html">Art School</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Layanan</div>
+          <ul class="footer-list">
+            <li><a href="layanan.html#seni-panggung">Seni Panggung</a></li>
+            <li><a href="kostum.html">Sewa Kostum</a></li>
+            <li><a href="art-school.html">Sekolah Tari</a></li>
+            <li><a href="layanan.html#festival">Festival &amp; Event</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <ul class="footer-list">
+            <li><a href="/cdn-cgi/l/email-protection#f39a9d959cb3929d9d9a809281869e83929892dd909c9e"><span class="__cf_email__" data-cfemail="deb7b0b8b19ebfb0b0b7adbfacabb3aebfb5bff0bdb1b3">[email&#160;protected]</span></a></li>
+            <li><a href="https://wa.me/628XXXXXXXXX">+62 8XX-XXXX-XXXX</a></li>
+            <li><span>Bandung, Jawa Barat</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p class="footer-copy">© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.</p>
+        <p class="footer-copy">Melestarikan Seni Budaya Sunda sejak 2003.</p>
+      </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+  </body>
+</html>
