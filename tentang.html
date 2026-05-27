@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+
+    <title>Tentang Kami — PT Sanggar Seni Annisa Rumpaka</title>
+    <meta name="description" content="Profil Sanggar Seni Annisa Rumpaka: Visi misi, sejarah sejak 2008, dan bidang jasa kami dalam pelestarian serta internasionalisasi budaya Indonesia." />
+    <link rel="canonical" href="https://rumpaka-web.vercel.app/tentang.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tentang Kami — Annisa Rumpaka" />
+    <meta property="og:description" content="Profil, Visi Misi, dan Bidang Jasa PT Sanggar Seni Annisa Rumpaka." />
+    <meta property="og:url" content="https://rumpaka-web.vercel.app/tentang.html" />
+    <meta property="og:image" content="https://rumpaka-web.vercel.app/assets/og-image.webp" />
+    <meta property="og:locale" content="id_ID" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      .about-wrap {
+        padding: 100px 50px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      
+      /* PROFIL */
+      .profil-sec {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        margin-bottom: 120px;
+      }
+      .profil-txt h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 4vw, 48px);
+        margin-bottom: 24px;
+      }
+      .profil-txt h2 span { color: var(--gold); }
+      .profil-txt p {
+        font-size: 14.5px;
+        line-height: 1.8;
+        color: var(--text-mute);
+        margin-bottom: 20px;
+        text-wrap: pretty;
+      }
+      .profil-img {
+        border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        position: relative;
+        background: url('assets/img/busana-adat.png') center/cover;
+      }
+
+      /* VISI MISI */
+      .vm-sec {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 24px;
+        padding: 80px;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
+        margin-bottom: 120px;
+      }
+      .v-box h3, .m-box h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 32px;
+        color: var(--gold);
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+      }
+      .v-box p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.9);
+      }
+      .m-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .m-list li {
+        position: relative;
+        padding-left: 32px;
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: var(--text-mute);
+      }
+      .m-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: -2px;
+        font-size: 24px;
+        color: var(--gold);
+      }
+
+      /* BIDANG JASA */
+      .jasa-sec {
+        margin-bottom: 80px;
+      }
+      .jasa-sec-head {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .jasa-sec-head h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 4vw, 48px);
+        margin-bottom: 16px;
+      }
+      .jasa-sec-head p {
+        color: var(--text-mute);
+        font-size: 14.5px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .jasa-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+      }
+      .jasa-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 16px;
+        padding: 40px 30px;
+        transition: transform 0.3s, background 0.3s, border-color 0.3s;
+      }
+      .jasa-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(200, 169, 110, 0.4);
+      }
+      .jasa-card-num {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: rgba(200, 169, 110, 0.2);
+        margin-bottom: 20px;
+        line-height: 1;
+      }
+      .jasa-card h4 {
+        font-size: 18px;
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 1100px) {
+        .about-wrap { padding: 80px 32px; }
+        .profil-sec, .vm-sec { gap: 48px; }
+        .vm-sec { padding: 60px 40px; }
+      }
+      @media (max-width: 768px) {
+        .about-wrap { padding: 60px 20px; }
+        .profil-sec { grid-template-columns: 1fr; margin-bottom: 80px; }
+        .vm-sec { grid-template-columns: 1fr; padding: 40px 24px; margin-bottom: 80px; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+    <div id="cur" aria-hidden="true"></div><div id="ring" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="index.html" class="logo" aria-label="Annisa Rumpaka — Beranda">
+        <img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html" class="act" aria-current="page">Tentang</a></li>
+        <li class="dropdown">
+          <a href="layanan.html">Layanan</a>
+          <div class="dropdown-menu">
+            <a href="layanan.html#seni-panggung">Seni Panggung</a>
+            <a href="kostum.html">Arum Kostum</a>
+            <a href="art-school.html">Art School</a>
+          </div>
+        </li>
+        <li><a href="portofolio.html">Portofolio</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="nav-r">
+        <button class="icon-b" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg></button>
+        <a href="kontak.html" class="cta-b">Hubungi Kami</a>
+        <button class="ham" type="button" id="hamBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobMenu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu navigasi" aria-hidden="true">
+      <nav class="mob-nav" aria-label="Navigasi mobile">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html" class="act" aria-current="page">Tentang</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="layanan.html#seni-panggung" class="mob-sub">Seni Panggung</a>
+        <a href="kostum.html" class="mob-sub">Arum Kostum</a>
+        <a href="art-school.html" class="mob-sub">Art School</a>
+        <a href="portofolio.html">Portofolio</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <a href="kontak.html" class="cta-b mob-cta">Hubungi Kami</a>
+    </div>
+
+    <main id="main">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="page-hero-title">
+        <div class="ph-bg" aria-hidden="true"></div>
+        <div class="ph-grain" aria-hidden="true"></div>
+        <div class="ph-vig" aria-hidden="true"></div>
+        <div class="ph-content">
+          <div class="eyebrow">
+            <span class="dash" aria-hidden="true"></span>
+            <span>Tentang Kami</span>
+          </div>
+          <h1 id="page-hero-title">Profil<br /><em>Sanggar</em></h1>
+          <p>Mengenal lebih dekat perjalanan, visi, dan dedikasi kami dalam melestarikan budaya Indonesia di kancah global.</p>
+        </div>
+      </section>
+
+      <div class="about-wrap">
+        <!-- PROFIL SANGGAR -->
+        <section class="profil-sec">
+          <div class="profil-txt">
+            <h2>Sanggar Seni<br/><span>Annisa Rumpaka</span></h2>
+            <p>Sanggar Seni Annisa Rumpaka adalah institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari dan pertunjukan yang inovatif.</p>
+            <p>Didirikan pada tahun 2008 dan berbasis di Bogor, Indonesia, sanggar ini telah berkembang menjadi platform kreatif yang menghubungkan nilai-nilai tradisional dengan pendekatan artistik kontemporer. Dengan dukungan pelatih profesional dan seniman berpengalaman, Annisa Rumpaka secara konsisten menghadirkan karya yang tidak hanya estetis, tetapi juga memiliki nilai edukatif dan diplomasi budaya.</p>
+            <p>Seiring dengan meningkatnya kepercayaan dari berbagai institusi dan masyarakat, Sanggar Seni Annisa Rumpaka aktif berpartisipasi dalam berbagai panggung nasional dan internasional sebagai representasi budaya Indonesia.</p>
+          </div>
+          <div class="profil-img" aria-hidden="true"></div>
+        </section>
+
+        <!-- VISI MISI -->
+        <section class="vm-sec">
+          <div class="v-box">
+            <h3>VISI</h3>
+            <p>Menjadi institusi seni pertunjukan terkemuka yang menghadirkan kekayaan budaya Indonesia di panggung global. Dengan mengedepankan inovasi, keautentikan, dan standar kualitas internasional, kami berkomitmen untuk melestarikan dan mempromosikan seni tradisional Indonesia sekaligus menciptakan karya yang kompetitif, relevan, dan bernilai tinggi di kancah internasional.</p>
+          </div>
+          <div class="m-box">
+            <h3>MISI</h3>
+            <ul class="m-list">
+              <li>Mengembangkan seni tari tradisional Indonesia melalui pendekatan kreatif dan kontemporer tanpa meninggalkan nilai budaya aslinya.</li>
+              <li>Menjadi duta budaya Indonesia dalam berbagai forum dan event internasional sebagai bentuk diplomasi budaya.</li>
+              <li>Menciptakan karya pertunjukan yang mampu menjangkau audiens global melalui storytelling yang kuat dan visual yang estetis.</li>
+              <li>Meningkatkan kualitas sumber daya manusia di bidang seni melalui pelatihan profesional dan berkelanjutan.</li>
+              <li>Membangun kolaborasi lintas negara dan budaya untuk memperluas eksposur seni Indonesia di tingkat dunia.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- BIDANG JASA -->
+        <section class="jasa-sec">
+          <div class="jasa-sec-head">
+            <h2>Layanan & Kegiatan Seni</h2>
+            <p>Kami menyediakan berbagai layanan seni pertunjukan yang dapat disesuaikan dengan kebutuhan acara nasional maupun internasional, antara lain:</p>
+          </div>
+          <div class="jasa-grid">
+            <div class="jasa-card">
+              <div class="jasa-card-num">01</div>
+              <h4>Pertunjukan Tari Tradisional & Kontemporer</h4>
+            </div>
+            <div class="jasa-card">
+              <div class="jasa-card-num">02</div>
+              <h4>Cultural Performance Event Internasional & Diplomatik</h4>
+            </div>
+            <div class="jasa-card">
+              <div class="jasa-card-num">03</div>
+              <h4>Opening & Welcoming Performance Resmi</h4>
+            </div>
+            <div class="jasa-card">
+              <div class="jasa-card-num">04</div>
+              <h4>Kolaborasi Seni Lintas Budaya</h4>
+            </div>
+            <div class="jasa-card">
+              <div class="jasa-card-num">05</div>
+              <h4>Produksi Pertunjukan Tematik (Festival, Expo)</h4>
+            </div>
+            <div class="jasa-card">
+              <div class="jasa-card-num">06</div>
+              <h4>Pelatihan dan Workshop Seni Tari</h4>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" /></a>
+          <p class="footer-tagline">Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigasi</div>
+          <ul class="footer-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="portofolio.html">Portofolio</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Layanan</div>
+          <ul class="footer-list">
+            <li><a href="layanan.html#seni-panggung">Seni Panggung</a></li>
+            <li><a href="kostum.html">Sewa Kostum</a></li>
+            <li><a href="art-school.html">Sekolah Tari</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <ul class="footer-list">
+            <li><a href="mailto:arum.artdance@gmail.com">arum.artdance@gmail.com</a></li>
+            <li><a href="https://wa.me/62895644961">+62 895-644-961</a></li>
+            <li><span>Jakarta Selatan</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p class="footer-copy">© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.</p>
+        <p class="footer-copy">Melestarikan Seni Budaya Sunda sejak 2008.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+  </body>
+</html>

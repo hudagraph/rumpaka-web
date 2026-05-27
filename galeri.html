@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+
+    <title>Galeri — PT Sanggar Seni Annisa Rumpaka</title>
+    <meta name="description" content="Galeri aktivitas, pementasan tari, dan acara dari PT Sanggar Seni Annisa Rumpaka." />
+    <link rel="canonical" href="https://rumpaka-web.vercel.app/galeri.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Galeri — Annisa Rumpaka" />
+    <meta property="og:description" content="Kumpulan momen dan karya dari Annisa Rumpaka." />
+    <meta property="og:url" content="https://rumpaka-web.vercel.app/galeri.html" />
+    <meta property="og:image" content="https://rumpaka-web.vercel.app/assets/og-image.webp" />
+    <meta property="og:locale" content="id_ID" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      .gal-wrap {
+        padding: 100px 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      
+      .sec-tit {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(36px, 5vw, 64px);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .sec-tit span {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .sec-desc {
+        text-align: center;
+        color: var(--text-mute);
+        font-size: 15px;
+        margin-bottom: 80px;
+      }
+
+      /* MASONRY GALLERY */
+      .masonry {
+        column-count: 3;
+        column-gap: 24px;
+      }
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 24px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        background: #111;
+      }
+      .masonry-item img {
+        width: 100%;
+        display: block;
+        transition: transform 0.6s ease, filter 0.4s ease;
+      }
+      .masonry-item:hover img {
+        transform: scale(1.05);
+        filter: brightness(0.7);
+      }
+      .masonry-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .masonry-item:hover .masonry-overlay {
+        opacity: 1;
+      }
+      .masonry-overlay svg {
+        width: 32px;
+        height: 32px;
+        stroke: #fff;
+        fill: none;
+        stroke-width: 1.5;
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(7, 7, 7, 0.96);
+        backdrop-filter: blur(24px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .lightbox.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        transform: scale(0.95);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .lightbox.show img {
+        transform: scale(1);
+      }
+      .lb-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        padding: 10px;
+        transition: color 0.3s;
+      }
+      .lb-close:hover {
+        color: var(--gold);
+      }
+      .lb-close svg {
+        width: 32px;
+        height: 32px;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      @media (max-width: 1024px) {
+        .masonry { column-count: 2; }
+      }
+      @media (max-width: 600px) {
+        .gal-wrap { padding: 60px 20px; }
+        .masonry { column-count: 1; }
+        .lb-close { top: 20px; right: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+    <div id="cur" aria-hidden="true"></div><div id="ring" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="index.html" class="logo" aria-label="Annisa Rumpaka — Beranda">
+        <img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li class="dropdown">
+          <a href="layanan.html">Layanan</a>
+          <div class="dropdown-menu">
+            <a href="layanan.html#seni-panggung">Seni Panggung</a>
+            <a href="kostum.html">Arum Kostum</a>
+            <a href="art-school.html">Art School</a>
+          </div>
+        </li>
+        <li><a href="portofolio.html">Portofolio</a></li>
+        <li><a href="galeri.html" class="act" aria-current="page">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="nav-r">
+        <button class="icon-b" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg></button>
+        <a href="kontak.html" class="cta-b">Hubungi Kami</a>
+        <button class="ham" type="button" id="hamBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobMenu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu navigasi" aria-hidden="true">
+      <nav class="mob-nav" aria-label="Navigasi mobile">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="layanan.html#seni-panggung" class="mob-sub">Seni Panggung</a>
+        <a href="kostum.html" class="mob-sub">Arum Kostum</a>
+        <a href="art-school.html" class="mob-sub">Art School</a>
+        <a href="portofolio.html">Portofolio</a>
+        <a href="galeri.html" class="act" aria-current="page">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <a href="kontak.html" class="cta-b mob-cta">Hubungi Kami</a>
+    </div>
+
+    <main id="main">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="page-hero-title">
+        <div class="ph-bg" aria-hidden="true"></div>
+        <div class="ph-grain" aria-hidden="true"></div>
+        <div class="ph-vig" aria-hidden="true"></div>
+        <div class="ph-content">
+          <div class="eyebrow">
+            <span class="dash" aria-hidden="true"></span>
+            <span>Galeri Karya</span>
+          </div>
+          <h1 id="page-hero-title">Momen &<br /><em>Aktivitas</em></h1>
+          <p>Koleksi visual persembahan karya seni tari tradisional dan kontemporer dari Sanggar Seni Annisa Rumpaka.</p>
+        </div>
+      </section>
+
+      <div class="gal-wrap">
+        <h2 class="sec-tit">Karya <span>Nusantara</span></h2>
+        <p class="sec-desc">Beberapa cuplikan penampilan penari kami di atas panggung.</p>
+        
+        <div class="masonry">
+          <!-- Placeholder Items -->
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/seni-panggung.png" alt="Galeri 1" loading="lazy">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/busana-adat.png" alt="Galeri 2" loading="lazy" style="aspect-ratio:3/4;">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/festival.png" alt="Galeri 3" loading="lazy">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/art-school.png" alt="Galeri 4" loading="lazy" style="aspect-ratio:1/1;">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/seni-panggung.png" alt="Galeri 5" loading="lazy" style="aspect-ratio:4/5;">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+          <div class="masonry-item" tabindex="0">
+            <img src="assets/img/busana-adat.png" alt="Galeri 6" loading="lazy">
+            <div class="masonry-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+      <button class="lb-close" id="lbClose" aria-label="Tutup galeri">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <img src="" id="lbImg" alt="Gambar Galeri Membesar" />
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" /></a>
+          <p class="footer-tagline">Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigasi</div>
+          <ul class="footer-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="portofolio.html">Portofolio</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Layanan</div>
+          <ul class="footer-list">
+            <li><a href="layanan.html#seni-panggung">Seni Panggung</a></li>
+            <li><a href="kostum.html">Sewa Kostum</a></li>
+            <li><a href="art-school.html">Sekolah Tari</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <ul class="footer-list">
+            <li><a href="mailto:arum.artdance@gmail.com">arum.artdance@gmail.com</a></li>
+            <li><a href="https://wa.me/62895644961">+62 895-644-961</a></li>
+            <li><span>Jakarta Selatan</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p class="footer-copy">© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.</p>
+        <p class="footer-copy">Melestarikan Seni Budaya Sunda sejak 2008.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+    <script>
+      // LIGHTBOX LOGIC
+      document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.masonry-item');
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbClose = document.getElementById('lbClose');
+
+        function openLb(src) {
+          lbImg.src = src;
+          lb.classList.add('show');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLb() {
+          lb.classList.remove('show');
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          setTimeout(() => { lbImg.src = ""; }, 400); // clear after transition
+        }
+
+        items.forEach(item => {
+          item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (img) openLb(img.src);
+          });
+          item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const img = item.querySelector('img');
+              if (img) openLb(img.src);
+            }
+          });
+        });
+
+        lbClose.addEventListener('click', closeLb);
+        lb.addEventListener('click', (e) => {
+          if (e.target === lb) closeLb();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lb.classList.contains('show')) {
+            closeLb();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

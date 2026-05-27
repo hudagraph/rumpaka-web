@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+
+    <title>Portofolio Event — PT Sanggar Seni Annisa Rumpaka</title>
+    <meta name="description" content="Portofolio partisipasi dan pertunjukan Sanggar Seni Annisa Rumpaka di event nasional dan internasional." />
+    <link rel="canonical" href="https://rumpaka-web.vercel.app/portofolio.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portofolio Event — Annisa Rumpaka" />
+    <meta property="og:description" content="Kiprah Annisa Rumpaka di kancah nasional dan internasional." />
+    <meta property="og:url" content="https://rumpaka-web.vercel.app/portofolio.html" />
+    <meta property="og:image" content="https://rumpaka-web.vercel.app/assets/og-image.webp" />
+    <meta property="og:locale" content="id_ID" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      .porto-wrap {
+        padding: 100px 50px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      /* HIGHLIGHTS */
+      .highlight-sec {
+        margin-bottom: 120px;
+      }
+      .sec-tit {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(36px, 5vw, 64px);
+        text-align: center;
+        margin-bottom: 80px;
+      }
+      .sec-tit span {
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      .hl-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-bottom: 80px;
+      }
+      .hl-item.rev {
+        direction: rtl;
+      }
+      .hl-item.rev > * {
+        direction: ltr;
+      }
+      .hl-img {
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background-color: #111;
+        position: relative;
+      }
+      .hl-img img {
+        width: 100%; height: 100%; object-fit: cover;
+      }
+      .hl-txt {
+        padding: 20px 0;
+      }
+      .hl-yr {
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .hl-txt h3 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(28px, 3.5vw, 42px);
+        line-height: 1.2;
+        margin-bottom: 24px;
+      }
+      .hl-txt p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--text-mute);
+        margin-bottom: 24px;
+      }
+      .hl-tari {
+        background: rgba(200, 169, 110, 0.05);
+        border-left: 3px solid var(--gold);
+        padding: 16px 24px;
+        border-radius: 0 12px 12px 0;
+      }
+      .hl-tari-tit {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .hl-tari-list {
+        font-size: 14px;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.6;
+      }
+
+      /* TIMELINE */
+      .timeline-sec {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .timeline-sec::before {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 20px;
+        width: 1px;
+        background: rgba(255,255,255,0.1);
+      }
+      .tl-item {
+        position: relative;
+        padding-left: 64px;
+        margin-bottom: 48px;
+      }
+      .tl-dot {
+        position: absolute;
+        left: 16px;
+        top: 6px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 12px var(--gold-glow);
+      }
+      .tl-yr {
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .tl-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
+      }
+
+      @media (max-width: 900px) {
+        .hl-item {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          margin-bottom: 60px;
+        }
+        .hl-item.rev { direction: ltr; }
+      }
+      @media (max-width: 768px) {
+        .porto-wrap { padding: 60px 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Lewati ke konten</a>
+    <div id="cur" aria-hidden="true"></div><div id="ring" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="mainNav" aria-label="Navigasi utama">
+      <a href="index.html" class="logo" aria-label="Annisa Rumpaka — Beranda">
+        <img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li class="dropdown">
+          <a href="layanan.html">Layanan</a>
+          <div class="dropdown-menu">
+            <a href="layanan.html#seni-panggung">Seni Panggung</a>
+            <a href="kostum.html">Arum Kostum</a>
+            <a href="art-school.html">Art School</a>
+          </div>
+        </li>
+        <li><a href="portofolio.html" class="act" aria-current="page">Portofolio</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="nav-r">
+        <button class="icon-b" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg></button>
+        <a href="kontak.html" class="cta-b">Hubungi Kami</a>
+        <button class="ham" type="button" id="hamBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobMenu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu navigasi" aria-hidden="true">
+      <nav class="mob-nav" aria-label="Navigasi mobile">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="layanan.html#seni-panggung" class="mob-sub">Seni Panggung</a>
+        <a href="kostum.html" class="mob-sub">Arum Kostum</a>
+        <a href="art-school.html" class="mob-sub">Art School</a>
+        <a href="portofolio.html" class="act" aria-current="page">Portofolio</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <a href="kontak.html" class="cta-b mob-cta">Hubungi Kami</a>
+    </div>
+
+    <main id="main">
+      <!-- PAGE HERO -->
+      <section class="page-hero" aria-labelledby="page-hero-title">
+        <div class="ph-bg" aria-hidden="true"></div>
+        <div class="ph-grain" aria-hidden="true"></div>
+        <div class="ph-vig" aria-hidden="true"></div>
+        <div class="ph-content">
+          <div class="eyebrow">
+            <span class="dash" aria-hidden="true"></span>
+            <span>Portofolio</span>
+          </div>
+          <h1 id="page-hero-title">Rekam<br /><em>Jejak</em></h1>
+          <p>Telah dipercaya sebagai representasi budaya Indonesia dalam berbagai platform seni dan diplomasi budaya, di tingkat nasional hingga internasional.</p>
+        </div>
+      </section>
+
+      <div class="porto-wrap">
+        <!-- HIGHLIGHTS -->
+        <section class="highlight-sec">
+          <h2 class="sec-tit">Highlight <span>Event</span></h2>
+          
+          <!-- HL 1 -->
+          <div class="hl-item">
+            <div class="hl-img">
+              <img src="assets/img/seni-panggung.png" alt="Little Asia Arab Saudi" loading="lazy">
+            </div>
+            <div class="hl-txt">
+              <div class="hl-yr">2023 - 2024</div>
+              <h3>Little Asia, Arab Saudi</h3>
+              <p>Selama tiga bulan, sanggar ini dipercaya mewakili Indonesia dalam festival budaya internasional di Jeddah. Annisa Rumpaka berkolaborasi dengan berbagai negara Asia seperti Korea Selatan, Jepang, China, Thailand, Malaysia, dan Filipina.</p>
+              <div class="hl-tari">
+                <div class="hl-tari-tit">Menampilkan 5 Tarian Nusantara</div>
+                <div class="hl-tari-list">Tari Blantek (Jakarta) • Tari Merak (Jawa Barat) • Tari Mojang (Jawa Barat) • Tari Legong (Bali) • Tari Piring (Padang)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HL 2 -->
+          <div class="hl-item rev">
+            <div class="hl-img">
+              <img src="assets/img/festival.png" alt="Osaka Expo Japan" loading="lazy">
+            </div>
+            <div class="hl-txt">
+              <div class="hl-yr">2025</div>
+              <h3>World Expo Osaka, Jepang</h3>
+              <p>Berpartisipasi sebagai perwakilan resmi Kabupaten Bogor setelah melalui proses seleksi ketat. Penampilan interaktif ini berhasil menciptakan pengalaman budaya yang hangat dan memperkenalkan budaya Indonesia kepada audiens internasional secara lebih dekat.</p>
+              <div class="hl-tari">
+                <div class="hl-tari-tit">Sajian Pertunjukan</div>
+                <div class="hl-tari-list">Lagu Khas Kabupaten Bogor • Tari Tradisional Kaulinan Barudak • Interaksi Menari Bersama Pengunjung & MC Jepang</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HL 3 -->
+          <div class="hl-item">
+            <div class="hl-img">
+              <img src="assets/img/busana-adat.png" alt="Boulevard World Riyadh" loading="lazy">
+            </div>
+            <div class="hl-txt">
+              <div class="hl-yr">2025 - 2026</div>
+              <h3>Boulevard World, Riyadh Arab Saudi</h3>
+              <p>Berpartisipasi sebagai penampil dalam rangkaian event internasional di salah satu destinasi hiburan global yang menghadirkan budaya dari seluruh dunia. Kami tidak hanya menampilkan keindahan tari, tetapi juga memperkenalkan kekayaan Nusantara.</p>
+              <div class="hl-tari">
+                <div class="hl-tari-tit">Rangkaian Tari Nusantara oleh 8 Penari</div>
+                <div class="hl-tari-list">Tari Kalimantan • Janger Bali • Jaipong Kreasi • Rampak Jimbe • Tari Merak</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="timeline-sec">
+          <h2 class="sec-tit">Rekam <span>Sejarah</span></h2>
+          
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025 – 2026</div><div class="tl-desc">Penampil dalam Boulevard World Riyadh, Arab Saudi.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2025</div><div class="tl-desc">Penampil mewakili Kabupaten Bogor dalam World Expo 2025 Osaka, Jepang.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2023 – 2024</div><div class="tl-desc">Penampil mewakili Indonesia dalam Little Asia Festival di Jeddah, Arab Saudi.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2023</div><div class="tl-desc">Partisipasi dalam West Java Festival, Bandung.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2022</div><div class="tl-desc">Penampilan dalam "1000 Penari Tari Merak" bersama Gubernur Jawa Barat di Gedung Sate, Bandung.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2019</div><div class="tl-desc">Misi Kesenian Indonesia ke Hainan, China.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2019</div><div class="tl-desc">Delegasi Seni Budaya ke Batam, Indonesia.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2019</div><div class="tl-desc">Misi Kesenian ke Singapura.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2019</div><div class="tl-desc">Penampilan dalam acara penyambutan Istri Presiden Republik Indonesia ke-7 pada kegiatan OASE Kabinet Kerja.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2018</div><div class="tl-desc">Penampilan pada acara Pembukaan dan Penutupan Pekan Olahraga Daerah (PORDA) Jawa Barat.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2018</div><div class="tl-desc">Keterlibatan dalam rangkaian acara persiapan Asian Games 2018.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2017</div><div class="tl-desc">Program Cultural Exchange di Selangor, Malaysia.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2014 – Sekarang</div><div class="tl-desc">Partisipasi rutin dalam World Dance Day 24 Jam Menari setiap tahunnya.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">2012</div><div class="tl-desc">Kolaborasi dalam Tari Kolosal Hari Kesetiakawanan Sosial Nasional (HKSN) bersama Presiden Republik Indonesia ke-6, di GOR Sentul.</div></div>
+
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img class="logo-mark" src="assets/logo.png" alt="Annisa Rumpaka" /></a>
+          <p class="footer-tagline">Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigasi</div>
+          <ul class="footer-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="portofolio.html">Portofolio</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Layanan</div>
+          <ul class="footer-list">
+            <li><a href="layanan.html#seni-panggung">Seni Panggung</a></li>
+            <li><a href="kostum.html">Sewa Kostum</a></li>
+            <li><a href="art-school.html">Sekolah Tari</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Kontak</div>
+          <ul class="footer-list">
+            <li><a href="mailto:arum.artdance@gmail.com">arum.artdance@gmail.com</a></li>
+            <li><a href="https://wa.me/62895644961">+62 895-644-961</a></li>
+            <li><span>Jakarta Selatan</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <p class="footer-copy">© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.</p>
+        <p class="footer-copy">Melestarikan Seni Budaya Sunda sejak 2008.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/cursor.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+  </body>
+</html>
