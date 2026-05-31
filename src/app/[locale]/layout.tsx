@@ -31,8 +31,8 @@ export async function generateMetadata({params}: {params: {locale: string}}): Pr
   const t = await getTranslations({locale, namespace: 'Metadata'});
 
   return {
-    title: "PT Sanggar Seni Annisa Rumpaka — Warisan Budaya Sunda Sejak 2003",
-    description: "Sanggar seni tari tradisional Sunda di Bandung. Layanan pertunjukan panggung, sewa kostum tari (Arum Kostum), sekolah seni untuk anak & remaja (Arum Art School), dan kolaborasi festival nasional maupun internasional.",
+    title: t("title"),
+    description: t("description"),
     keywords: "sanggar tari, tari sunda, seni tari bandung, sewa kostum tari, sekolah tari anak, annisa rumpaka, arum kostum, arum art school",
     authors: [{ name: "PT Sanggar Seni Annisa Rumpaka" }],
     metadataBase: new URL("https://rumpaka-web.vercel.app/"),

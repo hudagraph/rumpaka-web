@@ -18,7 +18,11 @@ export default function Home() {
       <section className="home-about" aria-labelledby="home-about-title">
         <div className="home-about-txt">
           <h2 id="home-about-title">
-            {t("about_title")}<br/><span>{t("about_subtitle")}</span>
+            {t.rich("about_title", {
+              br: () => <br />,
+              span: (chunks) => <span>{chunks}</span>
+            })}
+            <br/><span>{t("about_subtitle")}</span>
           </h2>
           <p>{t("about_desc")}</p>
           <Link href="/tentang" className="btn-gold">
