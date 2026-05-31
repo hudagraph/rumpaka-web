@@ -8,4 +8,11 @@ values
 insert into public.events (year, title, description, is_highlight, tari_title, tari_list, display_order)
 values 
 ('2023 - 2024', 'Little Asia, Arab Saudi', 'Mewakili Indonesia dalam festival budaya internasional di Jeddah.', true, 'Menampilkan 5 Tarian Nusantara', 'Tari Blantek, Tari Merak, Tari Mojang, Tari Legong, Tari Piring', 1),
-('2025', 'World Expo Osaka, Jepang', 'Perwakilan resmi Kabupaten Bogor di kancah global.', true, 'Sajian Pertunjukan', 'Lagu Khas Bogor, Tari Kaulinan Barudak', 2);
+('2025', 'World Expo Osaka, Jepang', 'Perwakilan resmi Kabupaten Bogor di kancah global.', true, 'Sajian Pertunjukan', 'Lagu Khas Bogor, Tari Kaulinan Barudak', 2),
+('2023', 'West Java Festival', 'Partisipasi dalam West Java Festival, Bandung.', false, null, null, 3),
+('2022', '1000 Penari Tari Merak', 'Penampilan dalam "1000 Penari Tari Merak" bersama Gubernur Jawa Barat di Gedung Sate, Bandung.', false, null, null, 4),
+('2019', 'Misi Kesenian Hainan', 'Misi Kesenian Indonesia ke Hainan, China.', false, null, null, 5),
+('2019', 'Misi Kesenian Singapura', 'Misi Kesenian ke Singapura.', false, null, null, 6),
+('2018', 'PORDA Jabar', 'Penampilan pada acara Pembukaan dan Penutupan Pekan Olahraga Daerah (PORDA) Jawa Barat.', false, null, null, 7),
+('2017', 'Cultural Exchange Malaysia', 'Program Cultural Exchange di Selangor, Malaysia.', false, null, null, 8),
+('2012', 'HKSN Sentul', 'Kolaborasi dalam Tari Kolosal Hari Kesetiakawanan Sosial Nasional (HKSN) bersama Presiden Republik Indonesia ke-6.', false, null, null, 9);

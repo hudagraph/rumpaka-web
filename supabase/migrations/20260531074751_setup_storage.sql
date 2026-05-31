@@ -1,12 +1,14 @@
--- Membuat bucket 'uploads' untuk menyimpan gambar
+-- Membuat bucket 'uploads' jika belum ada
 insert into storage.buckets (id, name, public)
-values ('uploads', 'uploads', true);
+select 'uploads', 'uploads', true
+where not exists (
+  select 1 from storage.buckets where id = 'uploads'
+);
 
 -- Kebijakan akses publik (hanya baca)
+-- Gunakan drop policy agar tidak error saat push ulang
+drop policy if exists "Public Access" on storage.objects;
+
 create policy "Public Access"
 on storage.objects for select
 using ( bucket_id = 'uploads' );
-
--- Kebijakan untuk upload (hanya admin/service role yang bisa lewat server actions)
--- Karena kita pakai service role key di server actions, kita tidak butuh policy 'insert' publik.
--- Namun jika ingin via dashboard tetap lancar, service role sudah otomatis punya akses.

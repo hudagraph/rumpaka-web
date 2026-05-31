@@ -42,7 +42,7 @@ export async function addKostum(data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('kostum').insert([data]);
     if (error) throw error;
-    revalidatePath("/[locale]/kostum", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -54,7 +54,7 @@ export async function updateKostum(id: string, data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('kostum').update(data).eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/kostum", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -66,7 +66,7 @@ export async function deleteKostum(id: string) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('kostum').delete().eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/kostum", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -79,7 +79,7 @@ export async function addEvent(data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('events').insert([data]);
     if (error) throw error;
-    revalidatePath("/[locale]/portofolio", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -91,7 +91,7 @@ export async function updateEvent(id: string, data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('events').update(data).eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/portofolio", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -103,7 +103,7 @@ export async function deleteEvent(id: string) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('events').delete().eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/portofolio", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -116,7 +116,7 @@ export async function addGallery(data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('gallery').insert([data]);
     if (error) throw error;
-    revalidatePath("/[locale]/galeri", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -128,7 +128,7 @@ export async function updateGallery(id: string, data: any) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('gallery').update(data).eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/galeri", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
@@ -140,7 +140,7 @@ export async function deleteGallery(id: string) {
     await verifyAuth();
     const { error } = await supabaseAdmin.from('gallery').delete().eq('id', id);
     if (error) throw error;
-    revalidatePath("/[locale]/galeri", "page");
+    revalidatePath("/", "layout");
     return { success: true };
   } catch (err: any) {
     return { success: false, error: err.message };
