@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export default function Cursor() {
   const curRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const ringPos = useRef({ x: 0, y: 0 });
 
@@ -43,7 +43,7 @@ export default function Cursor() {
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
     };
   }, []);
 
