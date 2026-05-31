@@ -1,14 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 
 export default function Nav({ isHero = false }: { isHero?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale();
+  const router = useRouter();
+  const t = useTranslations("Nav");
 
   useEffect(() => {
     if (!isHero) {
@@ -30,23 +33,28 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  const switchLocale = (newLocale: 'id' | 'en') => {
+    router.replace(pathname, { locale: newLocale });
+    closeMenu();
+  };
+
   const navClass = `nav ${isHero ? "nav-hero" : ""} ${isScrolled ? "scrolled" : ""}`;
 
   const navLinks = [
-    { name: "Beranda", href: "/" },
-    { name: "Tentang", href: "/tentang" },
+    { name: t("home"), href: "/" },
+    { name: t("about"), href: "/tentang" },
     { 
-      name: "Layanan", 
+      name: t("services"), 
       href: "/layanan",
       dropdown: [
-        { name: "Seni Panggung", href: "/layanan#seni-panggung" },
-        { name: "Arum Kostum", href: "/kostum" },
+        { name: locale === 'en' ? "Stage Performance" : "Seni Panggung", href: "/layanan#seni-panggung" },
+        { name: locale === 'en' ? "Arum Costume" : "Arum Kostum", href: "/kostum" },
         { name: "Art School", href: "/art-school" },
       ]
     },
-    { name: "Portofolio", href: "/portofolio" },
-    { name: "Galeri", href: "/galeri" },
-    { name: "Kontak", href: "/kontak" },
+    { name: t("portfolio"), href: "/portofolio" },
+    { name: t("gallery"), href: "/galeri" },
+    { name: t("contact"), href: "/kontak" },
   ];
 
   return (
@@ -58,9 +66,9 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
 
         <ul className="nav-links">
           {navLinks.map((link) => (
-            <li key={link.name} className={link.dropdown ? "dropdown" : ""}>
+            <li key={link.href} className={link.dropdown ? "dropdown" : ""}>
               <Link 
-                href={link.href} 
+                href={link.href as any} 
                 className={pathname === link.href ? "act" : ""}
                 aria-current={pathname === link.href ? "page" : undefined}
               >
@@ -69,7 +77,7 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
               {link.dropdown && (
                 <div className="dropdown-menu">
                   {link.dropdown.map((sub) => (
-                    <Link key={sub.name} href={sub.href}>
+                    <Link key={sub.href} href={sub.href as any}>
                       {sub.name}
                     </Link>
                   ))}
@@ -80,13 +88,22 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
         </ul>
 
         <div className="nav-r">
-          <button className="icon-b" type="button" aria-label="Cari">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
-              <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" strokeWidth="2" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </button>
-          <Link href="/kontak" className="cta-b">Hubungi Kami</Link>
+          <div className="lang-switcher">
+            <button 
+              className={locale === 'id' ? 'act' : ''} 
+              onClick={() => switchLocale('id')}
+              aria-label="Bahasa Indonesia"
+            >ID</button>
+            <span className="sep">|</span>
+            <button 
+              className={locale === 'en' ? 'act' : ''} 
+              onClick={() => switchLocale('en')}
+              aria-label="English"
+            >EN</button>
+          </div>
+
+          <Link href="/kontak" className="cta-b">{t("cta")}</Link>
+          
           <button 
             className={`ham ${isOpen ? "open" : ""}`} 
             type="button" 
@@ -114,24 +131,43 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
       >
         <nav className="mob-nav" aria-label="Navigasi mobile">
           {navLinks.map((link) => (
-            <div key={link.name}>
+            <div key={link.href}>
               <Link 
-                href={link.href} 
+                href={link.href as any} 
                 className={pathname === link.href ? "act" : ""}
                 onClick={closeMenu}
               >
                 {link.name}
               </Link>
               {link.dropdown && link.dropdown.map((sub) => (
-                <Link key={sub.name} href={sub.href} className="mob-sub" onClick={closeMenu}>
+                <Link key={sub.href} href={sub.href as any} className="mob-sub" onClick={closeMenu}>
                   {sub.name}
                 </Link>
               ))}
             </div>
           ))}
+          <div className="mob-lang">
+            <button className={locale === 'id' ? 'act' : ''} onClick={() => switchLocale('id')}>Bahasa Indonesia</button>
+            <button className={locale === 'en' ? 'act' : ''} onClick={() => switchLocale('en')}>English</button>
+          </div>
         </nav>
-        <Link href="/kontak" className="cta-b mob-cta" onClick={closeMenu}>Hubungi Kami</Link>
+        <Link href="/kontak" className="cta-b mob-cta" onClick={closeMenu}>{t("cta")}</Link>
       </div>
+      
+      <style jsx>{`
+        .lang-switcher { display: flex; align-items: center; gap: 6px; margin-right: 20px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); }
+        .lang-switcher button { background: transparent; border: none; color: inherit; cursor: pointer; padding: 4px; transition: color 0.3s; }
+        .lang-switcher button.act { color: var(--gold); }
+        .lang-switcher .sep { opacity: 0.3; font-weight: 300; }
+        
+        .mob-lang { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; align-items: center; }
+        .mob-lang button { background: transparent; border: none; color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 600; cursor: pointer; }
+        .mob-lang button.act { color: var(--gold); }
+
+        @media (max-width: 900px) {
+          .lang-switcher { display: none; }
+        }
+      `}</style>
     </>
   );
 }

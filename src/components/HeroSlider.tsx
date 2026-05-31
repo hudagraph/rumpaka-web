@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
-const SLIDES = [
+const SLIDE_ASSETS = [
   {
     num: "01",
-    cat: "Highlight Event",
-    title: ["LITTLE", "ASIA"],
-    desc: "Berkompetisi dan berkolaborasi dengan negara Asia lainnya pada festival Little Asia di Jeddah, Arab Saudi (2023-2024), menampilkan lima tarian Nusantara yang memukau.",
     href: "/portofolio",
     img: "/assets/img/seni-panggung.png",
     tone: "linear-gradient(135deg,#1a0800,#4a1500,#7a2800)",
@@ -16,9 +14,6 @@ const SLIDES = [
   },
   {
     num: "02",
-    cat: "Highlight Event",
-    title: ["OSAKA", "EXPO"],
-    desc: "Sebagai delegasi resmi mewakili Kabupaten Bogor di World Expo 2025 Osaka, Jepang, menghadirkan pertunjukan interaktif Tari Kaulinan Barudak di kancah global.",
     href: "/portofolio",
     img: "/assets/img/festival.png",
     tone: "linear-gradient(135deg,#0a1a08,#183012,#2a5020)",
@@ -26,9 +21,6 @@ const SLIDES = [
   },
   {
     num: "03",
-    cat: "Highlight Event",
-    title: ["BOULEVARD", "WORLD"],
-    desc: "Membawa keindahan Tari Janger, Jaipong, dan Merak di panggung Boulevard World Riyadh, Arab Saudi (2025-2026), memperkuat citra budaya Indonesia di dunia.",
     href: "/portofolio",
     img: "/assets/img/busana-adat.png",
     tone: "linear-gradient(135deg,#080e1a,#101a30,#1a2a50)",
@@ -36,9 +28,6 @@ const SLIDES = [
   },
   {
     num: "04",
-    cat: "Tentang Kami",
-    title: ["PROFIL", "SANGGAR"],
-    desc: "Institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari yang inovatif.",
     href: "/tentang",
     img: "/assets/img/seni-panggung.png",
     tone: "linear-gradient(135deg,#1a1300,#3a2800,#604500)",
@@ -47,12 +36,25 @@ const SLIDES = [
 ];
 
 export default function HeroSlider() {
+  const t = useTranslations("Hero");
   const [cur, setCur] = useState(0);
   const [busy, setBusy] = useState(false);
   const [animKey, setAnimKey] = useState(0);
   const autoT = useRef<NodeJS.Timeout | null>(null);
   const heroRef = useRef<HTMLElement>(null);
   const touchX = useRef(0);
+
+  // Get translated slide content
+  // next-intl allows getting raw data if configured, but here we'll use a more standard approach
+  // We can get the array by using a loop or by accessing individual keys.
+  // Actually, next-intl v3+ doesn't support .raw() easily for arrays without specific config.
+  // Let's use a simpler way: iterate over the known length.
+  const SLIDES = SLIDE_ASSETS.map((asset, i) => ({
+    ...asset,
+    cat: t(`slides.${i}.cat`),
+    title: [t(`slides.${i}.title.0`), t(`slides.${i}.title.1`)],
+    desc: t(`slides.${i}.desc`),
+  }));
 
   const go = useCallback((newIdx: number) => {
     if (busy || newIdx === cur) return;
@@ -62,11 +64,11 @@ export default function HeroSlider() {
 
     setTimeout(() => {
       setBusy(false);
-    }, 1000); // Wait for animations
+    }, 1000); 
   }, [busy, cur]);
 
-  const goNext = useCallback(() => go((cur + 1) % SLIDES.length), [cur, go]);
-  const goPrev = useCallback(() => go((cur - 1 + SLIDES.length) % SLIDES.length), [cur, go]);
+  const goNext = useCallback(() => go((cur + 1) % SLIDES.length), [cur, go, SLIDES.length]);
+  const goPrev = useCallback(() => go((cur - 1 + SLIDES.length) % SLIDES.length), [cur, go, SLIDES.length]);
 
   const startAuto = useCallback(() => {
     if (autoT.current) clearInterval(autoT.current);
@@ -152,12 +154,12 @@ export default function HeroSlider() {
             {slide.desc}
           </p>
           <div className="s-acts" style={{ animation: "fup .7s .7s ease forwards" }}>
-            <button className="btn-play" aria-label="Tonton Video">
+            <button className="btn-play" aria-label={t("watch")}>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </button>
-            <Link href={slide.href} className="btn-more">Selengkapnya</Link>
+            <Link href={slide.href as any} className="btn-more">{t("more")}</Link>
           </div>
         </div>
       </div>
@@ -166,7 +168,7 @@ export default function HeroSlider() {
         <div className="cards-row" key={`cards-${animKey}`}>
           {SLIDES.map((_, i) => {
             const idx = (cur + 1 + i) % SLIDES.length;
-            if (i === SLIDES.length - 1) return null; // Only show other slides
+            if (i === SLIDES.length - 1) return null; 
             const s = SLIDES[idx];
             return (
               <button 
@@ -182,7 +184,7 @@ export default function HeroSlider() {
                     style={{ backgroundImage: `url("${s.img}"), ${s.tone}` }}
                   ></div>
                   <div className="card-shade" aria-hidden="true"></div>
-                  <span className="play-btn" aria-label="Tonton di YouTube">
+                  <span className="play-btn" aria-label={t("watch")}>
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -200,10 +202,10 @@ export default function HeroSlider() {
 
       <div className="controls">
         <div className="arr-g">
-          <button className="arr" onClick={goPrev} aria-label="Slide sebelumnya">
+          <button className="arr" onClick={goPrev} aria-label={t("prev")}>
             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" /></svg>
           </button>
-          <button className="arr" onClick={goNext} aria-label="Slide berikutnya">
+          <button className="arr" onClick={goNext} aria-label={t("next")}>
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg>
           </button>
         </div>
@@ -219,7 +221,7 @@ export default function HeroSlider() {
               key={i}
               className={`dot ${i === cur ? "on" : ""}`}
               onClick={() => go(i)}
-              aria-label={`Ke slide ${i + 1}`}
+              aria-label={t("goTo", {num: i + 1})}
               aria-selected={i === cur}
             ></button>
           ))}
@@ -230,10 +232,14 @@ export default function HeroSlider() {
             className="cnt-n"
             style={{ animation: "fup .52s ease forwards" }}
           >
-            {slide.num}
+            {assetNum(cur + 1)}
           </div>
         </div>
       </div>
     </section>
   );
+}
+
+function assetNum(n: number) {
+  return n < 10 ? `0${n}` : n;
 }

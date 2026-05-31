@@ -25,16 +25,20 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const [newKostum, setNewKostum] = useState({
-    name: "", slug: "", category: "klasik", category_label: "Tari Klasik",
-    status: "both", description: "", full_description: "",
+    name: "", name_en: "", slug: "", category: "klasik", 
+    category_label: "Tari Klasik", category_label_en: "Classical Dance",
+    status: "both", description: "", description_en: "",
+    full_description: "", full_description_en: "",
     bahan: "", ukuran: "", aksesoris: "", stok: "",
     harga_sewa: "", harga_beli: "", motif_type: "kebaya", image_url: ""
   });
   const [newEvent, setNewEvent] = useState({
-    year: "", title: "", description: "", tari_title: "", tari_list: "", is_highlight: false, image_url: ""
+    year: "", title: "", title_en: "", description: "", description_en: "",
+    tari_title: "", tari_title_en: "", tari_list: "", tari_list_en: "",
+    is_highlight: false, image_url: ""
   });
   const [newGallery, setNewGallery] = useState({
-    title: "", image_url: "", aspect_ratio: "4/3"
+    title: "", title_en: "", image_url: "", aspect_ratio: "4/3"
   });
 
   useEffect(() => {
@@ -100,22 +104,27 @@ export default function AdminPage() {
     setEditingId(item.id);
     if (activeTab === "kostum") {
       setNewKostum({
-        name: item.name, slug: item.slug, category: item.category, 
-        category_label: item.category_label, status: item.status, 
-        description: item.description, full_description: item.full_description,
+        name: item.name, name_en: item.name_en || "", slug: item.slug, category: item.category, 
+        category_label: item.category_label, category_label_en: item.category_label_en || "",
+        status: item.status, 
+        description: item.description, description_en: item.description_en || "",
+        full_description: item.full_description, full_description_en: item.full_description_en || "",
         bahan: item.bahan, ukuran: item.ukuran, aksesoris: item.aksesoris, 
         stok: item.stok, harga_sewa: item.harga_sewa, harga_beli: item.harga_beli, 
         motif_type: item.motif_type, image_url: item.image_url
       });
     } else if (activeTab === "events") {
       setNewEvent({
-        year: item.year, title: item.title, description: item.description,
-        tari_title: item.tari_title, tari_list: item.tari_list,
+        year: item.year, title: item.title, title_en: item.title_en || "",
+        description: item.description, description_en: item.description_en || "",
+        tari_title: item.tari_title, tari_title_en: item.tari_title_en || "",
+        tari_list: item.tari_list, tari_list_en: item.tari_list_en || "",
         is_highlight: item.is_highlight, image_url: item.image_url
       });
     } else {
       setNewGallery({
-        title: item.title, image_url: item.image_url, aspect_ratio: item.aspect_ratio
+        title: item.title, title_en: item.title_en || "",
+        image_url: item.image_url, aspect_ratio: item.aspect_ratio
       });
     }
     setShowAdd(true);
@@ -139,13 +148,17 @@ export default function AdminPage() {
       setEditingId(null);
       fetchData();
       // Reset
-      setNewKostum({ name: "", slug: "", category: "klasik", category_label: "Tari Klasik", status: "both", description: "", full_description: "", bahan: "", ukuran: "", aksesoris: "", stok: "", harga_sewa: "", harga_beli: "", motif_type: "kebaya", image_url: "" });
-      setNewEvent({ year: "", title: "", description: "", tari_title: "", tari_list: "", is_highlight: false, image_url: "" });
-      setNewGallery({ title: "", image_url: "", aspect_ratio: "4/3" });
+      resetForms();
     } else {
       alert("Error: " + res.error);
     }
     setIsActionLoading(false);
+  }
+
+  function resetForms() {
+    setNewKostum({ name: "", name_en: "", slug: "", category: "klasik", category_label: "Tari Klasik", category_label_en: "Classical Dance", status: "both", description: "", description_en: "", full_description: "", full_description_en: "", bahan: "", ukuran: "", aksesoris: "", stok: "", harga_sewa: "", harga_beli: "", motif_type: "kebaya", image_url: "" });
+    setNewEvent({ year: "", title: "", title_en: "", description: "", description_en: "", tari_title: "", tari_title_en: "", tari_list: "", tari_list_en: "", is_highlight: false, image_url: "" });
+    setNewGallery({ title: "", title_en: "", image_url: "", aspect_ratio: "4/3" });
   }
 
   if (isLoading && !items.length) return <div className="admin-loading">Memuat...</div>;
@@ -194,7 +207,7 @@ export default function AdminPage() {
             <h2 className="content-title">Daftar {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h2>
             <p className="content-subtitle">Total: {items.length} item</p>
           </div>
-          <button onClick={() => { setEditingId(null); setShowAdd(true); }} className="add-btn" disabled={isActionLoading}>
+          <button onClick={() => { setEditingId(null); resetForms(); setShowAdd(true); }} className="add-btn" disabled={isActionLoading}>
             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" strokeWidth="3" style={{marginRight: 8}}><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
             Tambah {activeTab}
           </button>
@@ -206,7 +219,7 @@ export default function AdminPage() {
               <thead>
                 <tr>
                   <th>Preview</th>
-                  <th>Detail</th>
+                  <th>Detail (ID / EN)</th>
                   <th style={{textAlign: 'right'}}>Aksi</th>
                 </tr>
               </thead>
@@ -219,8 +232,8 @@ export default function AdminPage() {
                       </div>
                     </td>
                     <td>
-                      <div className="item-main">{item.name || item.title}</div>
-                      <div className="item-sub">{item.category_label || item.year || item.aspect_ratio}</div>
+                      <div className="item-main">{item.name || item.title} <span style={{color: '#94a3b8', fontWeight: 400, fontSize: 13}}>/ {item.name_en || item.title_en}</span></div>
+                      <div className="item-sub">{item.category_label || item.year}</div>
                     </td>
                     <td style={{textAlign: 'right'}}>
                       <div style={{display: 'flex', gap: 8, justifyContent: 'flex-end'}}>
@@ -239,28 +252,44 @@ export default function AdminPage() {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-card">
-            <h2>{editingId ? 'Edit' : 'Tambah'} {activeTab} Baru</h2>
+            <h2>{editingId ? 'Edit' : 'Tambah'} {activeTab}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-grid">
                 {activeTab === "kostum" && (
                   <>
                     <div className="field">
-                      <label>Nama Kostum</label>
+                      <label>Nama (ID)</label>
                       <input required value={newKostum.name} onChange={e => setNewKostum({...newKostum, name: e.target.value})} />
+                    </div>
+                    <div className="field">
+                      <label>Name (EN)</label>
+                      <input required value={newKostum.name_en} onChange={e => setNewKostum({...newKostum, name_en: e.target.value})} />
+                    </div>
+                    <div className="field">
+                      <label>Label Kategori (ID)</label>
+                      <input value={newKostum.category_label} onChange={e => setNewKostum({...newKostum, category_label: e.target.value})} />
+                    </div>
+                    <div className="field">
+                      <label>Category Label (EN)</label>
+                      <input value={newKostum.category_label_en} onChange={e => setNewKostum({...newKostum, category_label_en: e.target.value})} />
                     </div>
                     <div className="field">
                       <label>Slug (URL)</label>
                       <input required value={newKostum.slug} onChange={e => setNewKostum({...newKostum, slug: e.target.value})} />
                     </div>
                     <div className="field">
-                      <label>Kategori</label>
+                      <label>Kategori (System)</label>
                       <select value={newKostum.category} onChange={e => setNewKostum({...newKostum, category: e.target.value})}>
                         <option value="klasik">Klasik</option><option value="kreasi">Kreasi</option><option value="anak">Anak</option><option value="adat">Adat</option>
                       </select>
                     </div>
-                    <div className="field">
-                      <label>Harga Sewa</label>
-                      <input value={newKostum.harga_sewa} onChange={e => setNewKostum({...newKostum, harga_sewa: e.target.value})} />
+                    <div className="field full">
+                      <label>Deskripsi Singkat (ID)</label>
+                      <textarea value={newKostum.description} onChange={e => setNewKostum({...newKostum, description: e.target.value})} />
+                    </div>
+                    <div className="field full">
+                      <label>Short Description (EN)</label>
+                      <textarea value={newKostum.description_en} onChange={e => setNewKostum({...newKostum, description_en: e.target.value})} />
                     </div>
                   </>
                 )}
@@ -272,8 +301,20 @@ export default function AdminPage() {
                       <input required value={newEvent.year} onChange={e => setNewEvent({...newEvent, year: e.target.value})} />
                     </div>
                     <div className="field">
-                      <label>Judul Event</label>
+                      <label>Judul (ID)</label>
                       <input required value={newEvent.title} onChange={e => setNewEvent({...newEvent, title: e.target.value})} />
+                    </div>
+                    <div className="field full">
+                      <label>Title (EN)</label>
+                      <input required value={newEvent.title_en} onChange={e => setNewEvent({...newEvent, title_en: e.target.value})} />
+                    </div>
+                    <div className="field full">
+                      <label>Deskripsi (ID)</label>
+                      <textarea value={newEvent.description} onChange={e => setNewEvent({...newEvent, description: e.target.value})} />
+                    </div>
+                    <div className="field full">
+                      <label>Description (EN)</label>
+                      <textarea value={newEvent.description_en} onChange={e => setNewEvent({...newEvent, description_en: e.target.value})} />
                     </div>
                   </>
                 )}
@@ -281,8 +322,12 @@ export default function AdminPage() {
                 {activeTab === "gallery" && (
                   <>
                     <div className="field">
-                      <label>Judul (Opsional)</label>
+                      <label>Judul (ID - Opsional)</label>
                       <input value={newGallery.title} onChange={e => setNewGallery({...newGallery, title: e.target.value})} />
+                    </div>
+                    <div className="field">
+                      <label>Title (EN - Optional)</label>
+                      <input value={newGallery.title_en} onChange={e => setNewGallery({...newGallery, title_en: e.target.value})} />
                     </div>
                     <div className="field">
                       <label>Aspect Ratio</label>
@@ -369,7 +414,7 @@ export default function AdminPage() {
         .del-btn { color: #ef4444; background: #fee2e2; padding: 6px 12px; border-radius: 6px; border: none; cursor: pointer; font-size: 12px; font-weight: 700; }
         .del-btn:hover { background: #ef4444; color: white; }
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 24px; }
-        .modal-card { background: white; padding: 40px; border-radius: 24px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; }
+        .modal-card { background: white; padding: 40px; border-radius: 24px; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; }
         .modal-card h2 { margin-top: 0; margin-bottom: 32px; font-size: 22px; font-weight: 800; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
@@ -381,10 +426,18 @@ export default function AdminPage() {
         .current-preview img { width: 100%; height: 100%; object-fit: cover; }
         .preview-badge { position: absolute; top: 10px; right: 10px; background: #10b981; color: white; padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 800; }
         .upload-inputs { display: flex; flex-direction: column; gap: 8px; }
-        
         .modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f1f5f9; }
         .cancel-btn { background: #f1f5f9; color: #64748b; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; }
         .save-btn { background: #c8a96e; color: #0f172a; padding: 12px 32px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; }
+        
+        @media (max-width: 768px) {
+          .header-content { flex-direction: column; height: auto; padding: 20px 0; gap: 20px; }
+          .tabs { margin: 0; width: 100%; overflow-x: auto; }
+          .admin-content { padding: 24px 20px; }
+          .actions-bar { flex-direction: column; align-items: flex-start; gap: 20px; }
+          .add-btn { width: 100%; justify-content: center; }
+          .form-grid { grid-template-columns: 1fr; }
+        }
       `}</style>
     </div>
   );

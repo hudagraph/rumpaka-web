@@ -3,19 +3,24 @@
 import { useState, useEffect } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { supabase } from "@/lib/supabase";
+import { useLocale } from "next-intl";
 import "./kostum.css";
 
 interface Kostum {
   id: string;
   slug: string;
   name: string;
+  name_en: string | null;
   category: string;
   category_label: string;
+  category_label_en: string | null;
   status: string;
   description: string;
+  description_en: string | null;
   full_description: string;
+  full_description_en: string | null;
   bahan: string;
   ukuran: string;
   aksesoris: string;
@@ -107,6 +112,7 @@ export default function KostumPage() {
   const [filter, setFilter] = useState("all");
   const [selectedKostum, setSelectedKostum] = useState<Kostum | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const locale = useLocale();
 
   useEffect(() => {
     async function fetchKostum() {
@@ -133,6 +139,36 @@ export default function KostumPage() {
 
   const filteredItems = filter === "all" ? items : items.filter((k) => k.category === filter);
 
+  const labels = {
+    hero_cat: locale === 'en' ? 'Arum Costume' : 'Arum Kostum',
+    hero_title: locale === 'en' ? <>Traditional<br /><em>Attire</em></> : <>Busana<br /><em>Adat Sunda</em></>,
+    hero_desc: locale === 'en' ? 'Premium handmade traditional dance costume collection — available for rent or purchase. Each piece is crafted by artisans with over a decade of experience.' : 'Koleksi kostum tari handmade premium — tersedia untuk sewa maupun pembelian. Setiap potong dibuat oleh pengrajin berpengalaman lebih dari satu dekade.',
+    cat_title: locale === 'en' ? 'Collection Catalog' : 'Katalog Koleksi',
+    cat_desc: locale === 'en' ? 'Select a category to view specific collections. Click card for full details and availability.' : 'Pilih kategori untuk melihat koleksi spesifik. Klik kartu untuk detail lengkap dan ketersediaan.',
+    cta_consult: locale === 'en' ? 'Rent / Buy Consultation' : 'Konsultasi Sewa / Beli',
+    loading: locale === 'en' ? 'Loading catalog...' : 'Memuat katalog...',
+    price_day: locale === 'en' ? 'Rent /day' : 'Sewa /hari',
+    price_buy: locale === 'en' ? 'Purchase' : 'Harga Beli',
+    na: locale === 'en' ? 'N/A' : 'Tidak tersedia',
+    rent_only: locale === 'en' ? 'Rent only' : 'Sewa saja',
+    interest_title: locale === 'en' ? <>Interested in<br /><em>Our Collection?</em></> : <>Tertarik dengan<br /><em>Koleksi Kami?</em></>,
+    interest_desc: locale === 'en' ? 'Contact the Arum Costume team for size consultation, date availability, and custom orders.' : 'Hubungi tim Arum Kostum untuk konsultasi ukuran, ketersediaan tanggal, dan custom order.',
+    interest_btn: locale === 'en' ? 'Costume Consultation' : 'Konsultasi Kostum',
+    material: locale === 'en' ? 'Material' : 'Bahan',
+    size: locale === 'en' ? 'Size' : 'Ukuran',
+    accs: locale === 'en' ? 'Accessories' : 'Aksesoris',
+    stock: locale === 'en' ? 'Stock' : 'Stok',
+    wa_inquiry: locale === 'en' ? 'Inquire via WhatsApp' : 'Tanya via WhatsApp'
+  };
+
+  const categories = [
+    { id: "all", label: locale === 'en' ? 'All' : 'Semua', count: items.length },
+    { id: "klasik", label: locale === 'en' ? 'Classical' : 'Tari Klasik' },
+    { id: "kreasi", label: locale === 'en' ? 'Contemporary' : 'Tari Kreasi' },
+    { id: "anak", label: locale === 'en' ? 'Children' : 'Tari Anak' },
+    { id: "adat", label: locale === 'en' ? 'Traditional' : 'Upacara Adat' },
+  ];
+
   return (
     <main id="main">
       <Nav />
@@ -144,21 +180,21 @@ export default function KostumPage() {
         <div className="ph-content">
           <div className="eyebrow">
             <span className="dash" aria-hidden="true"></span>
-            <span>Arum Kostum</span>
+            <span>{labels.hero_cat}</span>
           </div>
-          <h1 id="page-hero-title">Busana<br /><em>Adat Sunda</em></h1>
-          <p>Koleksi kostum tari handmade premium — tersedia untuk sewa maupun pembelian. Setiap potong dibuat oleh pengrajin berpengalaman lebih dari satu dekade.</p>
+          <h1 id="page-hero-title">{labels.hero_title}</h1>
+          <p>{labels.hero_desc}</p>
         </div>
       </section>
 
       <section className="catalog-wrap" aria-labelledby="catalog-title">
         <div className="catalog-head">
           <div>
-            <h2 id="catalog-title">Katalog Koleksi</h2>
-            <p>Pilih kategori untuk melihat koleksi spesifik. Klik kartu untuk detail lengkap dan ketersediaan.</p>
+            <h2 id="catalog-title">{labels.cat_title}</h2>
+            <p>{labels.cat_desc}</p>
           </div>
           <Link href="/kontak?topic=kostum" className="link-arrow">
-            Konsultasi Sewa / Beli
+            {labels.cta_consult}
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -167,13 +203,7 @@ export default function KostumPage() {
         </div>
 
         <div className="filters" role="tablist" aria-label="Filter kategori kostum">
-          {[
-            { id: "all", label: "Semua", count: items.length },
-            { id: "klasik", label: "Tari Klasik" },
-            { id: "kreasi", label: "Tari Kreasi" },
-            { id: "anak", label: "Tari Anak" },
-            { id: "adat", label: "Upacara Adat" },
-          ].map((cat) => (
+          {categories.map((cat) => (
             <button 
               key={cat.id}
               className={`filter-btn ${filter === cat.id ? "act" : ""}`}
@@ -188,7 +218,7 @@ export default function KostumPage() {
         </div>
 
         {isLoading ? (
-          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--gold)' }}>Memuat katalog...</div>
+          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--gold)' }}>{labels.loading}</div>
         ) : (
           <div className="kostum-grid">
             {filteredItems.map((k) => (
@@ -200,9 +230,13 @@ export default function KostumPage() {
                 aria-label={`Lihat detail ${k.name}`}
               >
                 <div className="kostum-img img-ph">
-                  <span className="kostum-tag">{k.category_label}</span>
+                  <span className="kostum-tag">{locale === 'en' ? (k.category_label_en || k.category_label) : k.category_label}</span>
                   <span className={`kostum-status ${k.status}`}>
-                    {k.status === "both" ? "Sewa / Beli" : k.status === "sewa" ? "Sewa" : "Beli"}
+                    {k.status === "both" 
+                      ? (locale === 'en' ? 'Rent / Buy' : 'Sewa / Beli') 
+                      : k.status === "sewa" 
+                        ? (locale === 'en' ? 'Rent' : 'Sewa') 
+                        : (locale === 'en' ? 'Buy' : 'Beli')}
                   </span>
                   <div className="kostum-art">
                     {k.image_url ? (
@@ -213,24 +247,24 @@ export default function KostumPage() {
                   </div>
                 </div>
                 <div className="kostum-body">
-                  <div className="kostum-cat">{k.category_label}</div>
-                  <h3 className="kostum-name">{k.name}</h3>
-                  <p className="kostum-desc">{k.description}</p>
+                  <div className="kostum-cat">{locale === 'en' ? (k.category_label_en || k.category_label) : k.category_label}</div>
+                  <h3 className="kostum-name">{locale === 'en' ? (k.name_en || k.name) : k.name}</h3>
+                  <p className="kostum-desc">{locale === 'en' ? (k.description_en || k.description) : k.description}</p>
                   <div className="kostum-prices">
                     <div className="price">
-                      <div className="price-lbl">Sewa /hari</div>
+                      <div className="price-lbl">{labels.price_day}</div>
                       {k.harga_sewa && k.harga_sewa !== "—" ? (
-                        <div className="price-val"><span className="cur">Rp</span>{k.harga_sewa}<span style={{ fontSize: "9px", color: "var(--text-mute)", fontWeight: 500 }}>/hari</span></div>
+                        <div className="price-val"><span className="cur">Rp</span>{k.harga_sewa}<span style={{ fontSize: "9px", color: "var(--text-mute)", fontWeight: 500 }}> {locale === 'en' ? '/day' : '/hari'}</span></div>
                       ) : (
-                        <div className="price-empty">Tidak tersedia</div>
+                        <div className="price-empty">{labels.na}</div>
                       )}
                     </div>
                     <div className="price">
-                      <div className="price-lbl">Harga Beli</div>
+                      <div className="price-lbl">{labels.price_buy}</div>
                       {k.harga_beli && k.harga_beli !== "—" ? (
                         <div className="price-val"><span className="cur">Rp</span>{k.harga_beli}</div>
                       ) : (
-                        <div className="price-empty">Sewa saja</div>
+                        <div className="price-empty">{labels.rent_only}</div>
                       )}
                     </div>
                   </div>
@@ -243,10 +277,10 @@ export default function KostumPage() {
 
       <section className="cta-strip" id="cta">
         <div className="cta-inner">
-          <h2>Tertarik dengan<br /><em>Koleksi Kami?</em></h2>
-          <p>Hubungi tim Arum Kostum untuk konsultasi ukuran, ketersediaan tanggal, dan custom order.</p>
+          <h2>{labels.interest_title}</h2>
+          <p>{labels.interest_desc}</p>
           <Link href="/kontak?topic=kostum" className="btn-gold">
-            Konsultasi Kostum
+            {labels.interest_btn}
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -287,45 +321,45 @@ export default function KostumPage() {
               </div>
             </div>
             <div className="modal-body">
-              <div className="modal-cat">{selectedKostum.category_label}</div>
-              <h3 className="modal-name">{selectedKostum.name}</h3>
-              <p className="modal-desc">{selectedKostum.full_description}</p>
+              <div className="modal-cat">{locale === 'en' ? (selectedKostum.category_label_en || selectedKostum.category_label) : selectedKostum.category_label}</div>
+              <h3 className="modal-name">{locale === 'en' ? (selectedKostum.name_en || selectedKostum.name) : selectedKostum.name}</h3>
+              <p className="modal-desc">{locale === 'en' ? (selectedKostum.full_description_en || selectedKostum.full_description) : selectedKostum.full_description}</p>
               <div className="modal-meta">
                 <div>
-                  <strong>Bahan</strong>
+                  <strong>{labels.material}</strong>
                   <span>{selectedKostum.bahan}</span>
                 </div>
                 <div>
-                  <strong>Ukuran</strong>
+                  <strong>{labels.size}</strong>
                   <span>{selectedKostum.ukuran}</span>
                 </div>
                 <div>
-                  <strong>Aksesoris</strong>
+                  <strong>{labels.accs}</strong>
                   <span>{selectedKostum.aksesoris}</span>
                 </div>
                 <div>
-                  <strong>Stok</strong>
+                  <strong>{labels.stock}</strong>
                   <span>{selectedKostum.stok}</span>
                 </div>
               </div>
               <div className="modal-prices">
                 <div className="price">
-                  <div className="price-lbl">Harga Sewa</div>
+                  <div className="price-lbl">{locale === 'en' ? 'Rent Price' : 'Harga Sewa'}</div>
                   <div className="price-val">
                     {selectedKostum.harga_sewa && selectedKostum.harga_sewa !== "—" ? (
-                      <><span className="cur">Rp</span>{selectedKostum.harga_sewa}<span style={{ fontSize: "11px", color: "var(--text-mute)", fontWeight: 500 }}> /hari</span></>
+                      <><span className="cur">Rp</span>{selectedKostum.harga_sewa}<span style={{ fontSize: "11px", color: "var(--text-mute)", fontWeight: 500 }}> {locale === 'en' ? ' /day' : ' /hari'}</span></>
                     ) : (
-                      <span style={{ fontSize: "13px", color: "var(--text-soft)", fontStyle: "italic" }}>Tidak tersedia</span>
+                      <span style={{ fontSize: "13px", color: "var(--text-soft)", fontStyle: "italic" }}>{labels.na}</span>
                     )}
                   </div>
                 </div>
                 <div className="price">
-                  <div className="price-lbl">Harga Beli</div>
+                  <div className="price-lbl">{locale === 'en' ? 'Purchase Price' : 'Harga Beli'}</div>
                   <div className="price-val">
                     {selectedKostum.harga_beli && selectedKostum.harga_beli !== "—" ? (
                       <><span className="cur">Rp</span>{selectedKostum.harga_beli}</>
                     ) : (
-                      <span style={{ fontSize: "13px", color: "var(--text-soft)", fontStyle: "italic" }}>Sewa saja</span>
+                      <span style={{ fontSize: "13px", color: "var(--text-soft)", fontStyle: "italic" }}>{labels.rent_only}</span>
                     )}
                   </div>
                 </div>
@@ -338,7 +372,7 @@ export default function KostumPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Tanya via WhatsApp
+                  {labels.wa_inquiry}
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />

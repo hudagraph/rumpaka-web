@@ -1,0 +1,274 @@
+{
+  "Metadata": {
+    "title": "PT Sanggar Seni Annisa Rumpaka — Warisan Budaya Sunda Sejak 2003",
+    "description": "Sanggar seni tari tradisional Sunda di Bandung. Layanan pertunjukan panggung, sewa kostum tari (Arum Kostum), sekolah seni untuk anak & remaja (Arum Art School), dan kolaborasi festival nasional maupun internasional."
+  },
+  "Nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "portfolio": "Portofolio",
+    "gallery": "Galeri",
+    "contact": "Kontak",
+    "cta": "Hubungi Kami"
+  },
+  "Hero": {
+    "more": "Selengkapnya",
+    "watch": "Tonton Video",
+    "prev": "Slide sebelumnya",
+    "next": "Slide berikutnya",
+    "goTo": "Ke slide {num}",
+    "slides": [
+      {
+        "cat": "Highlight Event",
+        "title": ["LITTLE", "ASIA"],
+        "desc": "Berkompetisi dan berkolaborasi dengan negara Asia lainnya pada festival Little Asia di Jeddah, Arab Saudi (2023-2024), menampilkan lima tarian Nusantara yang memukau."
+      },
+      {
+        "cat": "Highlight Event",
+        "title": ["OSAKA", "EXPO"],
+        "desc": "Sebagai delegasi resmi mewakili Kabupaten Bogor di World Expo 2025 Osaka, Jepang, menghadirkan pertunjukan interaktif Tari Kaulinan Barudak di kancah global."
+      },
+      {
+        "cat": "Highlight Event",
+        "title": ["BOULEVARD", "WORLD"],
+        "desc": "Membawa keindahan Tari Janger, Jaipong, dan Merak di panggung Boulevard World Riyadh, Arab Saudi (2025-2026), memperkuat citra budaya Indonesia di dunia."
+      },
+      {
+        "cat": "Tentang Kami",
+        "title": ["PROFIL", "SANGGAR"],
+        "desc": "Institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari yang inovatif."
+      }
+    ]
+  },
+  "Home": {
+    "about_title": "Sanggar Seni",
+    "about_subtitle": "Annisa Rumpaka",
+    "about_desc": "Sanggar Seni Annisa Rumpaka adalah institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari dan pertunjukan yang inovatif. Didirikan pada tahun 2008 dan berbasis di Bogor, kami telah berkembang menjadi platform kreatif yang menghubungkan nilai-nilai tradisional dengan pendekatan artistik kontemporer.",
+    "about_cta": "Pelajari Lebih Lanjut"
+  },
+  "About": {
+    "hero_cat": "Tentang Kami",
+    "hero_title": "Profil<br><em>Sanggar</em>",
+    "hero_desc": "Mengenal lebih dekat perjalanan, visi, dan dedikasi kami dalam melestarikan budaya Indonesia di kancah global.",
+    "profil_title": "Sanggar Seni<br><span>Annisa Rumpaka</span>",
+    "profil_p1": "Sanggar Seni Annisa Rumpaka adalah institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari dan pertunjukan yang inovatif.",
+    "profil_p2": "Didirikan pada tahun 2008 dan berbasis di Bogor, Indonesia, sanggar ini telah berkembang menjadi platform kreatif yang menghubungkan nilai-nilai tradisional dengan pendekatan artistik kontemporer. Dengan dukungan pelatih profesional dan seniman berpengalaman, Annisa Rumpaka secara konsisten menghadirkan karya yang tidak hanya estetis, tetapi juga memiliki nilai edukatif dan diplomasi budaya.",
+    "profil_p3": "Seiring dengan meningkatnya kepercayaan dari berbagai institusi dan masyarakat, Sanggar Seni Annisa Rumpaka aktif berpartisipasi dalam berbagai panggung nasional dan internasional sebagai representasi budaya Indonesia.",
+    "visi_title": "VISI",
+    "visi_desc": "Menjadi institusi seni pertunjukan terkemuka yang menghadirkan kekayaan budaya Indonesia di panggung global. Dengan mengedepankan inovasi, keautentikan, dan standar kualitas internasional, kami berkomitmen untuk melestarikan dan mempromosikan seni tradisional Indonesia sekaligus menciptakan karya yang kompetitif, relevan, dan bernilai tinggi di kancah internasional.",
+    "misi_title": "MISI",
+    "misi_list": [
+      "Mengembangkan seni tari tradisional Indonesia melalui pendekatan kreatif dan kontemporer tanpa meninggalkan nilai budaya aslinya.",
+      "Menjadi duta budaya Indonesia dalam berbagai forum dan event internasional sebagai bentuk diplomasi budaya.",
+      "Menciptakan karya pertunjukan yang mampu menjangkau audiens global melalui storytelling yang kuat dan visual yang estetis.",
+      "Meningkatkan kualitas sumber daya manusia di bidang seni melalui pelatihan profesional dan berkelanjutan.",
+      "Membangun kolaborasi lintas negara dan budaya untuk memperluas eksposur seni Indonesia di tingkat dunia."
+    ],
+    "jasa_title": "Layanan & Kegiatan Seni",
+    "jasa_desc": "Kami menyediakan berbagai layanan seni pertunjukan yang dapat disesuaikan dengan kebutuhan acara nasional maupun internasional, antara lain:",
+    "jasa_items": [
+      "Pertunjukan Tari Tradisional & Kontemporer",
+      "Cultural Performance Event Internasional & Diplomatik",
+      "Opening & Welcoming Performance Resmi",
+      "Kolaborasi Seni Lintas Budaya",
+      "Produksi Pertunjukan Tematik (Festival, Expo)",
+      "Pelatihan dan Workshop Seni Tari"
+    ]
+  },
+  "Services": {
+    "hero_cat": "Layanan",
+    "hero_title": "Yang Kami<br><em>Tawarkan</em>",
+    "hero_desc": "Dari pertunjukan panggung hingga pendidikan seni — kami hadir untuk melestarikan dan merayakan keindahan budaya Sunda.",
+    "items": [
+      {
+        "cat": "Jasa Pertunjukan",
+        "title": "Seni<br>Panggung",
+        "desc": "Persembahan tari tradisional dan kontemporer untuk cultural performance, opening acara resmi, hingga kolaborasi seni lintas budaya. Kami menghadirkan penari terlatih dengan tata panggung profesional berskala nasional dan internasional.",
+        "cta": "Konsultasi Gratis"
+      },
+      {
+        "cat": "Arum Kostum",
+        "title": "Busana<br>Adat",
+        "desc": "Koleksi kostum tari tradisional premium dengan detail handmade yang dikerjakan oleh pengrajin berpengalaman. Tersedia untuk sewa maupun pembelian bagi keperluan panggung profesional, festival budaya, dan dokumentasi.",
+        "cta": "Lihat Koleksi"
+      },
+      {
+        "cat": "Arum Art School",
+        "title": "Sekolah<br>Seni Tari",
+        "desc": "Program belajar tari untuk anak dan remaja dengan metode kreatif yang memadukan nilai tradisi Sunda dengan ekspresi seni kontemporer. Dibimbing langsung oleh penari senior berpengalaman lebih dari dua dekade.",
+        "cta": "Pelajari Program"
+      },
+      {
+        "cat": "Portofolio Event",
+        "title": "Festival &<br>Panggung",
+        "desc": "Rekam jejak kami menghadirkan seni budaya di berbagai panggung bergengsi — dari festival nasional hingga panggung budaya internasional (Little Asia, Osaka Expo, Boulevard World Riyadh).",
+        "cta": "Lihat Portofolio Event"
+      }
+    ],
+    "stats": [
+      {"num": "20+", "lbl": "Tahun Berpengalaman"},
+      {"num": "500+", "lbl": "Pertunjukan Sukses"},
+      {"num": "300+", "lbl": "Alumni Art School"},
+      {"num": "15+", "lbl": "Festival Bergengsi"}
+    ],
+    "cta_title": "Siap Berkolaborasi<br><em>Bersama Kami?</em>",
+    "cta_desc": "Ceritakan kebutuhan Anda dan tim kami akan menghubungi dalam waktu 1×24 jam.",
+    "cta_btn": "Hubungi Kami Sekarang"
+  },
+  "ArtSchool": {
+    "hero_cat": "Art School",
+    "hero_title": "Sekolah<br><em>Tari Sunda</em>",
+    "hero_desc": "Belajar tari Sunda dari pengajar berpengalaman lebih dari 20 tahun. Program lengkap untuk anak, remaja, hingga dewasa — dari pemula hingga lanjutan.",
+    "prog_title": "Program <em>Pelatihan</em>",
+    "prog_desc": "Tiga jalur belajar yang dirancang untuk menyesuaikan ritme dan tujuan setiap murid — dari pengenalan dasar hingga persiapan kompetisi profesional.",
+    "items": [
+      {
+        "num": "01",
+        "sub": "8 Sesi · 2 Bulan",
+        "title": "Reguler",
+        "desc": "Kelas mingguan dalam kelompok kecil. Cocok untuk yang ingin belajar santai sambil mengenal kebudayaan.",
+        "list": [
+          "2× pertemuan/minggu (60 menit)",
+          "Maks. 8 murid per kelas",
+          "Materi terstruktur per level",
+          "Sertifikat penyelesaian"
+        ],
+        "price": "650K",
+        "unit": "/bulan"
+      },
+      {
+        "num": "02",
+        "sub": "12 Sesi · 1 Bulan",
+        "title": "Intensif",
+        "desc": "Program akselerasi untuk yang sudah memiliki dasar atau ingin cepat mahir. Frekuensi tinggi dengan materi mendalam.",
+        "list": [
+          "3× pertemuan/minggu (90 menit)",
+          "Maks. 6 murid per kelas",
+          "Praktek panggung mini",
+          "Sertifikat & rekomendasi"
+        ],
+        "price": "1.4Jt",
+        "unit": "/bulan",
+        "badge": "Populer"
+      },
+      {
+        "num": "03",
+        "sub": "Fleksibel · Per Sesi",
+        "title": "Privat",
+        "desc": "Pelatihan one-on-one dengan kurikulum custom. Ideal untuk persiapan audisi, kompetisi, atau performa khusus.",
+        "list": [
+          "1-on-1 dengan instruktur senior",
+          "Jadwal & lokasi fleksibel",
+          "Materi disesuaikan tujuan",
+          "Konsultasi karir seni"
+        ],
+        "price": "350K",
+        "unit": "/sesi 90 menit"
+      }
+    ],
+    "curr_title": "Empat Tahap<br><em>Penguasaan</em>",
+    "curr_desc": "Kurikulum kami dibagi menjadi empat tahap progresif. Setiap murid menjalani penilaian sebelum naik ke tahap berikutnya — memastikan fondasi yang kokoh sebelum melangkah lebih jauh.",
+    "curr_quote": "Tari bukan sekadar gerak — ia adalah cara tubuh memahami sejarah.",
+    "stages": [
+      {
+        "name": "Pengenalan",
+        "age": "5+ Tahun · Pemula",
+        "desc": "Pengenalan postur dasar, ritme gendang, dan gerakan tangan utama. Fokus pada kepercayaan diri dan kecintaan terhadap seni Sunda."
+      },
+      {
+        "name": "Dasar",
+        "age": "Lanjutan Pemula",
+        "desc": "Penguasaan tari pendek seperti Kembang Tanjung. Latihan koordinasi tangan-kaki, ekspresi wajah, dan musikalitas."
+      },
+      {
+        "name": "Menengah",
+        "age": "Intermediate",
+        "desc": "Tari berdurasi penuh seperti Jaipong dan Ronggeng. Pemahaman teori budaya, sejarah, dan karakter tari."
+      },
+      {
+        "name": "Mahir",
+        "age": "Advanced",
+        "desc": "Tari klasik kompleks seperti Tari Merak dan Topeng. Persiapan panggung profesional, kompetisi, dan koreografi mendiri."
+      }
+    ],
+    "inst_title": "Tim <em>Pengajar</em>",
+    "inst_desc": "Pengajar bersertifikat dengan pengalaman panggung nasional and internasional. Setiap instruktur fokus pada bidang keahliannya masing-masing.",
+    "instructors": [
+      {"name": "Annisa R.", "role": "Founder · Klasik", "bio": "Maestro tari klasik Sunda dengan 25+ tahun pengalaman. Lulusan ISBI Bandung."},
+      {"name": "Dewi M.", "role": "Tari Anak", "bio": "Spesialis pedagogi anak. Berpengalaman mengajar 15 tahun di sekolah dasar & menengah."},
+      {"name": "Rinda S.", "role": "Tari Kreasi", "bio": "Koreografer aktif yang menggabungkan tari Sunda dengan unsur kontemporer."},
+      {"name": "Bagas P.", "role": "Topeng & Wayang", "bio": "Spesialis tari topeng tradisional. Pernah tampil di festival Asia Tenggara."}
+    ],
+    "faq_title": "Pertanyaan <em>Umum</em>",
+    "faq_desc": "Hal-hal yang sering ditanyakan calon murid dan orang tua.",
+    "faqs": [
+      {"q": "Apakah harus memiliki pengalaman menari sebelumnya?", "a": "Tidak. Program Reguler kami dirancang untuk pemula total. Kami akan memulai dari postur, pernapasan, dan gerakan dasar terlebih dahulu — semua orang dapat mengikuti."},
+      {"q": "Berapa usia minimum untuk mendaftar?", "a": "Kelas anak dimulai dari usia 5 tahun (kelas Pengenalan). Untuk dewasa, tidak ada batas usia atas — kami memiliki murid hingga usia 60+."},
+      {"q": "Apakah disediakan kostum saat pertunjukan?", "a": "Ya. Murid mendapatkan akses sewa khusus dari Arum Kostum dengan harga khusus pelajar untuk pertunjukan akhir program dan pentas tahunan."},
+      {"q": "Bagaimana sistem kenaikan tahap?", "a": "Setiap tahap memiliki ujian akhir berupa peragaan tari. Penilaian mencakup teknik, ekspresi, musikalitas, dan konsistensi. Murid yang lulus mendapat sertifikat dan dapat mendaftar tahap berikutnya."},
+      {"q": "Apakah ada kelas trial sebelum mendaftar?", "a": "Ya. Kami menyediakan satu sesi trial gratis untuk calon murid baru. Hubungi kami via WhatsApp untuk menjadwalkan."},
+      {"q": "Di mana lokasi sekolahnya?", "a": "Studio utama berada di Bandung, Jawa Barat. Kelas privat dapat diadakan di lokasi murid (dalam kota Bandung) dengan biaya transportasi tambahan."}
+    ],
+    "cta_title": "Siap Memulai<br><em>Perjalananmu?</em>",
+    "cta_desc": "Daftar sesi trial gratis untuk merasakan kelas kami secara langsung — tanpa biaya, tanpa komitmen.",
+    "cta_btn": "Daftar Trial Gratis"
+  },
+  "Contact": {
+    "hero_cat": "Kontak",
+    "hero_title": "Mari<br><em>Terhubung</em>",
+    "hero_desc": "Kami senang mendengar dari Anda — baik untuk konsultasi pertunjukan, program Art School, maupun kolaborasi lainnya.",
+    "form_title": "Kirim Pesan",
+    "form_sub": "Isi formulir di bawah ini dan tim kami akan menghubungi Anda dalam 1×24 jam di hari kerja.",
+    "form": {
+      "name": "Nama Lengkap",
+      "tel": "No. WhatsApp / Telepon",
+      "email": "Alamat Email",
+      "topic": "Keperluan",
+      "message": "Pesan",
+      "placeholder_name": "Nama Anda",
+      "placeholder_message": "Ceritakan kebutuhan Anda secara singkat...",
+      "topics": {
+        "label": "Pilih keperluan...",
+        "performance": "Jasa Pertunjukan / Seni Panggung",
+        "costume": "Sewa atau Beli Kostum (Arum Kostum)",
+        "school": "Pendaftaran Art School",
+        "event": "Kolaborasi Event & Festival",
+        "other": "Lainnya"
+      },
+      "submit": "Kirim Pesan",
+      "submitting": "Mengirim...",
+      "success_title": "Pesan Terkirim!",
+      "success_desc": "Terima kasih telah menghubungi kami. Tim Annisa Rumpaka akan membalas pesan Anda dalam 1×24 jam di hari kerja.",
+      "validation": {
+        "name": "Nama minimal 2 karakter",
+        "tel": "Nomor telepon tidak valid",
+        "email": "Format email tidak valid",
+        "topic": "Silakan pilih keperluan",
+        "message": "Pesan minimal 10 karakter"
+      }
+    },
+    "info_title": "Informasi Kontak",
+    "info_sub": "Atau hubungi kami langsung melalui saluran berikut.",
+    "info": {
+      "tel_label": "Telepon & WhatsApp",
+      "email_label": "Email",
+      "loc_label": "Lokasi",
+      "wa_btn": "Chat via WhatsApp"
+    },
+    "hours_title": "Jam Operasional",
+    "hours": [
+      {"day": "Senin – Jumat", "time": "09.00 – 17.00 WIB"},
+      {"day": "Sabtu", "time": "09.00 – 14.00 WIB"},
+      {"day": "Minggu & Hari Libur", "time": "Tutup"}
+    ]
+  },
+  "Footer": {
+    "tagline": "Melestarikan dan merayakan seni budaya Sunda untuk generasi masa kini.",
+    "nav_title": "Navigasi",
+    "svc_title": "Layanan",
+    "contact_title": "Kontak",
+    "copy": "© 2026 PT Sanggar Seni Annisa Rumpaka. Hak cipta dilindungi.",
+    "mission": "Melestarikan Seni Budaya Sunda sejak 2008."
+  }
+}

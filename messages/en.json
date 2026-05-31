@@ -1,0 +1,274 @@
+{
+  "Metadata": {
+    "title": "PT Sanggar Seni Annisa Rumpaka — Sundanese Cultural Heritage Since 2003",
+    "description": "Traditional Sundanese dance studio in Bandung. Offering stage performances, traditional costume rentals (Arum Costume), art school for children & youth (Arum Art School), and international festival collaborations."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "cta": "Contact Us"
+  },
+  "Hero": {
+    "more": "Read More",
+    "watch": "Watch Video",
+    "prev": "Previous slide",
+    "next": "Next slide",
+    "goTo": "Go to slide {num}",
+    "slides": [
+      {
+        "cat": "Cultural Highlight",
+        "title": ["LITTLE", "ASIA"],
+        "desc": "Competing and collaborating with other Asian countries at the Little Asia festival in Jeddah, Saudi Arabia (2023-2024), featuring five stunning traditional dances from across the Indonesian archipelago."
+      },
+      {
+        "cat": "Global Event",
+        "title": ["OSAKA", "EXPO"],
+        "desc": "As an official delegate representing Bogor Regency at the 2025 World Expo Osaka, Japan, presenting the interactive Kaulinan Barudak (Sundanese Children's Traditional Games) dance on the global stage."
+      },
+      {
+        "cat": "Cultural Showcase",
+        "title": ["BOULEVARD", "WORLD"],
+        "desc": "Showcasing the beauty of Balinese Janger, Sundanese Jaipong, and the elegant Peacock (Merak) dances at the Boulevard World stage in Riyadh, Saudi Arabia (2025-2026)."
+      },
+      {
+        "cat": "About Us",
+        "title": ["STUDIO", "PROFILE"],
+        "desc": "A performing arts institution focused on the preservation, development, and internationalization of Indonesian culture through innovative dance works."
+      }
+    ]
+  },
+  "Home": {
+    "about_title": "Sanggar Seni",
+    "about_subtitle": "Annisa Rumpaka",
+    "about_desc": "Annisa Rumpaka Art Studio is a performing arts institution focused on the preservation, development, and internationalization of Indonesian culture through innovative dance works. Established in 2008 and based in Bogor, we have grown into a creative platform connecting traditional values with contemporary artistic approaches.",
+    "about_cta": "Learn More"
+  },
+  "About": {
+    "hero_cat": "About Us",
+    "hero_title": "Studio<br><em>Profile</em>",
+    "hero_desc": "A closer look at our journey, vision, and dedication to preserving Indonesian culture on the global stage.",
+    "profil_title": "Annisa Rumpaka<br><span>Art Academy</span>",
+    "profil_p1": "Annisa Rumpaka Art Academy is a performing arts institution focused on the preservation, development, and internationalization of Indonesian culture through innovative dance works.",
+    "profil_p2": "Founded in 2008 and based in Bogor, Indonesia, this studio has evolved into a creative platform that connects traditional values with contemporary artistic approaches. Supported by professional trainers and experienced artists, Annisa Rumpaka consistently presents works that are not only aesthetic but also carry educational and cultural diplomacy values.",
+    "profil_p3": "Along with the increasing trust from various institutions and the community, Annisa Rumpaka Art Academy actively participates in various national and international stages as a cultural representation of Indonesia.",
+    "visi_title": "VISION",
+    "visi_desc": "To be a leading performing arts institution that showcases the cultural richness of Indonesia on the global stage. By prioritizing innovation, authenticity, and international quality standards, we are committed to preserving and promoting traditional Indonesian arts while creating competitive, relevant, and high-value works globally.",
+    "misi_title": "MISSION",
+    "misi_list": [
+      "Developing traditional Indonesian dance arts through creative and contemporary approaches without losing original cultural values.",
+      "Becoming a cultural ambassador for Indonesia in various international forums and events as a form of cultural diplomacy.",
+      "Creating performing arts works capable of reaching global audiences through strong storytelling and aesthetic visuals.",
+      "Enhancing the quality of human resources in the arts through professional and continuous training.",
+      "Building collaborations across countries and cultures to expand the exposure of Indonesian arts worldwide."
+    ],
+    "jasa_title": "Services & Arts Activities",
+    "jasa_desc": "We provide various performing arts services that can be tailored to national or international event needs, including:",
+    "jasa_items": [
+      "Traditional & Contemporary Dance Performances",
+      "International & Diplomatic Cultural Performance Events",
+      "Official Opening & Welcoming Performances",
+      "Cross-Cultural Arts Collaboration",
+      "Thematic Performance Productions (Festivals, Expos)",
+      "Dance Arts Training and Workshops"
+    ]
+  },
+  "Services": {
+    "hero_cat": "Services",
+    "hero_title": "What We<br><em>Offer</em>",
+    "hero_desc": "From stage performances to arts education — we are here to preserve and celebrate the beauty of Sundanese culture.",
+    "items": [
+      {
+        "cat": "Performance Services",
+        "title": "Stage<br>Performance",
+        "desc": "Traditional and contemporary dance performances for cultural events, official openings, and cross-cultural collaborations. We feature trained dancers with professional stage management on national and international scales.",
+        "cta": "Free Consultation"
+      },
+      {
+        "cat": "Arum Costume",
+        "title": "Traditional<br>Attire",
+        "desc": "Premium collection of traditional dance costumes with handmade details crafted by experienced artisans. Available for rent or purchase for professional stage needs, cultural festivals, and documentation.",
+        "cta": "View Collection"
+      },
+      {
+        "cat": "Arum Art School",
+        "title": "Dance Art<br>School",
+        "desc": "Dance learning programs for children and youth with creative methods that blend Sundanese traditional values with contemporary artistic expression. Guided by senior dancers with over two decades of experience.",
+        "cta": "View Programs"
+      },
+      {
+        "cat": "Event Portfolio",
+        "title": "Festival &<br>Stage",
+        "desc": "Our track record of bringing cultural arts to various prestigious stages — from national festivals to international cultural stages (Little Asia, Osaka Expo, Boulevard World Riyadh).",
+        "cta": "View Event Portfolio"
+      }
+    ],
+    "stats": [
+      {"num": "20+", "lbl": "Years of Experience"},
+      {"num": "500+", "lbl": "Successful Shows"},
+      {"num": "300+", "lbl": "Art School Alumni"},
+      {"num": "15+", "lbl": "Prestigious Festivals"}
+    ],
+    "cta_title": "Ready to Collaborate<br><em>With Us?</em>",
+    "cta_desc": "Tell us your needs and our team will contact you within 24 hours.",
+    "cta_btn": "Contact Us Now"
+  },
+  "ArtSchool": {
+    "hero_cat": "Art School",
+    "hero_title": "Sundanese<br><em>Dance Academy</em>",
+    "hero_desc": "Learn Sundanese dance from instructors with over 20 years of experience. Complete programs for children, youth, and adults — from beginner to advanced.",
+    "prog_title": "Training <em>Programs</em>",
+    "prog_desc": "Three learning paths designed to adapt to each student's pace and goals — from basic introduction to professional competition preparation.",
+    "items": [
+      {
+        "num": "01",
+        "sub": "8 Sessions · 2 Months",
+        "title": "Regular",
+        "desc": "Weekly classes in small groups. Perfect for those who want to learn at a relaxed pace while exploring culture.",
+        "list": [
+          "2× meetings/week (60 minutes)",
+          "Max. 8 students per class",
+          "Structured material per level",
+          "Certificate of completion"
+        ],
+        "price": "650K",
+        "unit": "/month"
+      },
+      {
+        "num": "02",
+        "sub": "12 Sessions · 1 Month",
+        "title": "Intensive",
+        "desc": "Acceleration program for those who already have basics or want to master quickly. High frequency with in-depth material.",
+        "list": [
+          "3× meetings/week (90 minutes)",
+          "Max. 6 students per class",
+          "Mini stage practice",
+          "Certificate & recommendation"
+        ],
+        "price": "1.4M",
+        "unit": "/month",
+        "badge": "Popular"
+      },
+      {
+        "num": "03",
+        "sub": "Flexible · Per Sesi",
+        "title": "Private",
+        "desc": "One-on-one training with a custom curriculum. Ideal for preparation for auditions, competitions, or special performances.",
+        "list": [
+          "1-on-1 with senior instructor",
+          "Flexible schedule & location",
+          "Material tailored to goals",
+          "Arts career consultation"
+        ],
+        "price": "350K",
+        "unit": "/90-min session"
+      }
+    ],
+    "curr_title": "Four Stages<br><em>of Mastery</em>",
+    "curr_desc": "Our curriculum is divided into four progressive stages. Each student undergoes an assessment before moving to the next stage — ensuring a solid foundation before advancing.",
+    "curr_quote": "\"Dance is not just movement — it's a way for the body to understand history.\"",
+    "stages": [
+      {
+        "name": "Introduction",
+        "age": "5+ Years · Beginner",
+        "desc": "Introduction to basic posture, drum rhythms, and key hand movements. Focused on confidence and love for Sundanese arts."
+      },
+      {
+        "name": "Foundations",
+        "age": "Advanced Beginner",
+        "desc": "Mastery of short dances like Kembang Tanjung. Training in hand-foot coordination, facial expressions, and musicality."
+      },
+      {
+        "name": "Intermediate",
+        "age": "Intermediate",
+        "desc": "Full-duration dances like Jaipong and Ronggeng. Understanding cultural theory, history, and dance character."
+      },
+      {
+        "name": "Advanced",
+        "age": "Advanced",
+        "desc": "Complex classical dances like Tari Merak (Peacock Dance) and Mask Dance. Professional stage preparation, competition, and independent choreography."
+      }
+    ],
+    "inst_title": "Teaching <em>Team</em>",
+    "inst_desc": "Certified teachers with national and international stage experience. Each instructor focuses on their respective areas of expertise.",
+    "instructors": [
+      {"name": "Annisa R.", "role": "Founder · Classical", "bio": "Maestro of Sundanese classical dance with 25+ years of experience. ISBI Bandung graduate."},
+      {"name": "Dewi M.", "role": "Children's Dance", "bio": "Specialist in children's pedagogy. 15 years of experience teaching in primary & secondary schools."},
+      {"name": "Rinda S.", "role": "Creative Dance", "bio": "Active choreographer blending traditional Sundanese dance with contemporary elements."},
+      {"name": "Bagas P.", "role": "Topeng & Wayang", "bio": "Traditional mask dance specialist. Has performed at Southeast Asian festivals."}
+    ],
+    "faq_title": "Common <em>Questions</em>",
+    "faq_desc": "Frequently asked questions by prospective students and parents.",
+    "faqs": [
+      {"q": "Is previous dance experience required?", "a": "No. Our Regular program is designed for total beginners. We start from posture, breathing, and basic movements — anyone can join."},
+      {"q": "What is the minimum age to register?", "a": "Children's classes start from age 5 (Introduction class). For adults, there is no upper age limit — we have students up to age 60+."},
+      {"q": "Are costumes provided during performances?", "a": "Yes. Students get special rental access from Arum Costume at student rates for end-of-program and annual performances."},
+      {"q": "How does the stage progression system work?", "a": "Each stage has a final exam in the form of a dance demonstration. Assessment includes technique, expression, musicality, and consistency. Passing students receive a certificate and can register for the next stage."},
+      {"q": "Is there a trial class before registering?", "a": "Yes. We provide one free trial session for prospective new students. Contact us via WhatsApp to schedule."},
+      {"q": "Where is the school located?", "a": "The main studio is in Bandung, West Java. Private classes can be held at the student's location (within Bandung city) with additional transportation costs."}
+    ],
+    "cta_title": "Ready to Start<br><em>Your Journey?</em>",
+    "cta_desc": "Register for a free trial session to experience our class firsthand — no cost, no commitment.",
+    "cta_btn": "Register for Free Trial"
+  },
+  "Contact": {
+    "hero_cat": "Contact",
+    "hero_title": "Let's<br><em>Connect</em>",
+    "hero_desc": "We would love to hear from you — whether for performance consultations, Art School programs, or other collaborations.",
+    "form_title": "Send a Message",
+    "form_sub": "Fill out the form below and our team will get back to you within 24 hours on business days.",
+    "form": {
+      "name": "Full Name",
+      "tel": "WhatsApp / Phone No.",
+      "email": "Email Address",
+      "topic": "Purpose of Contact",
+      "message": "Message",
+      "placeholder_name": "Your Name",
+      "placeholder_message": "Briefly describe your needs...",
+      "topics": {
+        "label": "Select a purpose...",
+        "performance": "Performance Services / Stage Arts",
+        "costume": "Costume Rent or Purchase (Arum Costume)",
+        "school": "Art School Registration",
+        "event": "Event & Festival Collaboration",
+        "other": "Other"
+      },
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success_title": "Message Sent!",
+      "success_desc": "Thank you for contacting us. The Annisa Rumpaka team will reply to your message within 24 hours on business days.",
+      "validation": {
+        "name": "Name must be at least 2 characters",
+        "tel": "Invalid phone number",
+        "email": "Invalid email format",
+        "topic": "Please select a purpose",
+        "message": "Message must be at least 10 characters"
+      }
+    },
+    "info_title": "Contact Information",
+    "info_sub": "Or reach out to us directly through the following channels.",
+    "info": {
+      "tel_label": "Phone & WhatsApp",
+      "email_label": "Email",
+      "loc_label": "Location",
+      "wa_btn": "Chat via WhatsApp"
+    },
+    "hours_title": "Operating Hours",
+    "hours": [
+      {"day": "Monday – Friday", "time": "09:00 – 17.00 WIB"},
+      {"day": "Saturday", "time": "09:00 – 14.00 WIB"},
+      {"day": "Sunday & Public Holidays", "time": "Closed"}
+    ]
+  },
+  "Footer": {
+    "tagline": "Preserving and celebrating Sundanese cultural arts for the modern generation.",
+    "nav_title": "Navigation",
+    "svc_title": "Services",
+    "contact_title": "Contact",
+    "copy": "© 2026 PT Sanggar Seni Annisa Rumpaka. All rights reserved.",
+    "mission": "Preserving Sundanese Cultural Arts since 2008."
+  }
+}

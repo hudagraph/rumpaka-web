@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
+import { useLocale } from "next-intl";
 import "./galeri.css";
 
 interface GalleryItem {
   id: string;
   title: string | null;
+  title_en: string | null;
   image_url: string;
   aspect_ratio: string;
 }
@@ -17,6 +19,7 @@ export default function GaleriPage() {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const locale = useLocale();
 
   useEffect(() => {
     async function fetchGallery() {
@@ -37,6 +40,7 @@ export default function GaleriPage() {
     <main id="main">
       <Nav />
       
+      {/* PAGE HERO */}
       <section className="page-hero" aria-labelledby="page-hero-title">
         <div className="ph-bg" aria-hidden="true"></div>
         <div className="ph-grain" aria-hidden="true"></div>
@@ -44,21 +48,27 @@ export default function GaleriPage() {
         <div className="ph-content">
           <div className="eyebrow">
             <span className="dash" aria-hidden="true"></span>
-            <span>Galeri Karya</span>
+            <span>{locale === 'en' ? 'Gallery' : 'Galeri Karya'}</span>
           </div>
-          <h1 id="page-hero-title">Momen &<br /><em>Aktivitas</em></h1>
-          <p>Koleksi visual persembahan karya seni tari tradisional dan kontemporer dari Sanggar Seni Annisa Rumpaka.</p>
+          <h1 id="page-hero-title">
+            {locale === 'en' ? <>Moments &<br /><em>Activities</em></> : <>Momen &<br /><em>Aktivitas</em></>}
+          </h1>
+          <p>
+            {locale === 'en' 
+              ? 'Visual collection of traditional and contemporary dance performances by Sanggar Seni Annisa Rumpaka.' 
+              : 'Koleksi visual persembahan karya seni tari tradisional dan kontemporer dari Sanggar Seni Annisa Rumpaka.'}
+          </p>
         </div>
       </section>
 
       <div className="gal-wrap">
-        <h2 className="sec-tit">Karya <span>Nusantara</span></h2>
-        <p className="sec-desc">Beberapa cuplikan penampilan penari kami di atas panggung.</p>
+        <h2 className="sec-tit">{locale === 'en' ? <>Archipelago <span>Masterpieces</span></> : <>Karya <span>Nusantara</span></>}</h2>
+        <p className="sec-desc">{locale === 'en' ? 'A glimpse of our dancers on stage.' : 'Beberapa cuplikan penampilan penari kami di atas panggung.'}</p>
         
         {isLoading ? (
-          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--gold)' }}>Memuat galeri...</div>
+          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--gold)' }}>{locale === 'en' ? 'Loading gallery...' : 'Memuat galeri...'}</div>
         ) : items.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--text-mute)' }}>Belum ada foto di galeri.</div>
+          <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--text-mute)' }}>{locale === 'en' ? 'No photos in gallery yet.' : 'Belum ada foto di galeri.'}</div>
         ) : (
           <div className="masonry">
             {items.map((img) => (
@@ -74,7 +84,7 @@ export default function GaleriPage() {
                   }
                 }}
               >
-                <img src={img.image_url} alt={img.title || "Galeri Rumpaka"} loading="lazy" style={{ aspectRatio: img.aspect_ratio }} />
+                <img src={img.image_url} alt={(locale === 'en' ? img.title_en : img.title) || "Galeri Rumpaka"} loading="lazy" style={{ aspectRatio: img.aspect_ratio }} />
                 <div className="masonry-overlay">
                   <svg viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
