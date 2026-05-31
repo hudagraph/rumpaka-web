@@ -49,9 +49,9 @@
   },
   "About": {
     "hero_cat": "About Us",
-    "hero_title": "Studio<br/><em>Profile</em>",
+    "hero_title": "Studio<br></br><em>Profile</em>",
     "hero_desc": "A closer look at our journey, vision, and dedication to preserving Indonesian culture on the global stage.",
-    "profil_title": "Annisa Rumpaka<br/><span>Art Academy</span>",
+    "profil_title": "Annisa Rumpaka<br></br><span>Art Academy</span>",
     "profil_p1": "Annisa Rumpaka Art Academy is a performing arts institution focused on the preservation, development, and internationalization of Indonesian culture through innovative dance works.",
     "profil_p2": "Founded in 2008 and based in Bogor, Indonesia, this studio has evolved into a creative platform that connects traditional values with contemporary artistic approaches. Supported by professional trainers and experienced artists, Annisa Rumpaka consistently presents works that are not only aesthetic but also carry educational and cultural diplomacy values.",
     "profil_p3": "Along with the increasing trust from various institutions and the community, Annisa Rumpaka Art Academy actively participates in various national and international stages as a cultural representation of Indonesia.",
@@ -78,30 +78,30 @@
   },
   "Services": {
     "hero_cat": "Services",
-    "hero_title": "What We<br/><em>Offer</em>",
+    "hero_title": "What We<br></br><em>Offer</em>",
     "hero_desc": "From stage performances to arts education — we are here to preserve and celebrate the beauty of Sundanese culture.",
     "items": [
       {
         "cat": "Performance Services",
-        "title": "Stage<br/>Performance",
+        "title": "Stage<br></br>Performance",
         "desc": "Traditional and contemporary dance performances for cultural events, official openings, and cross-cultural collaborations. We feature trained dancers with professional stage management on national and international scales.",
         "cta": "Free Consultation"
       },
       {
         "cat": "Arum Costume",
-        "title": "Traditional<br/>Attire",
+        "title": "Traditional<br></br>Attire",
         "desc": "Premium collection of traditional dance costumes with handmade details crafted by experienced artisans. Available for rent or purchase for professional stage needs, cultural festivals, and documentation.",
         "cta": "View Collection"
       },
       {
         "cat": "Arum Art School",
-        "title": "Dance Art<br/>School",
+        "title": "Dance Art<br></br>School",
         "desc": "Dance learning programs for children and youth with creative methods that blend Sundanese traditional values with contemporary artistic expression. Guided by senior dancers with over two decades of experience.",
         "cta": "View Programs"
       },
       {
         "cat": "Event Portfolio",
-        "title": "Festival &<br/>Stage",
+        "title": "Festival &<br></br>Stage",
         "desc": "Our track record of bringing cultural arts to various prestigious stages — from national festivals to international cultural stages (Little Asia, Osaka Expo, Boulevard World Riyadh).",
         "cta": "View Event Portfolio"
       }
@@ -112,13 +112,13 @@
       {"num": "300+", "lbl": "Art School Alumni"},
       {"num": "15+", "lbl": "Prestigious Festivals"}
     ],
-    "cta_title": "Ready to Collaborate<br/><em>With Us?</em>",
+    "cta_title": "Ready to Collaborate<br></br><em>With Us?</em>",
     "cta_desc": "Tell us your needs and our team will contact you within 24 hours.",
     "cta_btn": "Contact Us Now"
   },
   "ArtSchool": {
     "hero_cat": "Art School",
-    "hero_title": "Sundanese<br/><em>Dance Academy</em>",
+    "hero_title": "Sundanese<br></br><em>Dance Academy</em>",
     "hero_desc": "Learn Sundanese dance from instructors with over 20 years of experience. Complete programs for children, youth, and adults — from beginner to advanced.",
     "prog_title": "Training <em>Programs</em>",
     "prog_desc": "Three learning paths designed to adapt to each student's pace and goals — from basic introduction to professional competition preparation.",
@@ -167,7 +167,7 @@
         "unit": "/90-min session"
       }
     ],
-    "curr_title": "Four Stages<br/><em>of Mastery</em>",
+    "curr_title": "Four Stages<br></br><em>of Mastery</em>",
     "curr_desc": "Our curriculum is divided into four progressive stages. Each student undergoes an assessment before moving to the next stage — ensuring a solid foundation before advancing.",
     "curr_quote": "\"Dance is not just movement — it's a way for the body to understand history.\"",
     "stages": [
@@ -210,13 +210,13 @@
       {"q": "Is there a trial class before registering?", "a": "Yes. We provide one free trial session for prospective new students. Contact us via WhatsApp to schedule."},
       {"q": "Where is the school located?", "a": "The main studio is in Bandung, West Java. Private classes can be held at the student's location (within Bandung city) with additional transportation costs."}
     ],
-    "cta_title": "Ready to Start<br/><em>Your Journey?</em>",
+    "cta_title": "Ready to Start<br></br><em>Your Journey?</em>",
     "cta_desc": "Register for a free trial session to experience our class firsthand — no cost, no commitment.",
     "cta_btn": "Register for Free Trial"
   },
   "Contact": {
     "hero_cat": "Contact",
-    "hero_title": "Let's<br/><em>Connect</em>",
+    "hero_title": "Let's<br></br><em>Connect</em>",
     "hero_desc": "We would love to hear from you — whether for performance consultations, Art School programs, or other collaborations.",
     "form_title": "Send a Message",
     "form_sub": "Fill out the form below and our team will get back to you within 24 hours on business days.",

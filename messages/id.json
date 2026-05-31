@@ -49,9 +49,9 @@
   },
   "About": {
     "hero_cat": "Tentang Kami",
-    "hero_title": "Profil<br/><em>Sanggar</em>",
+    "hero_title": "Profil<br></br><em>Sanggar</em>",
     "hero_desc": "Mengenal lebih dekat perjalanan, visi, and dedikasi kami dalam melestarikan budaya Indonesia di kancah global.",
-    "profil_title": "Sanggar Seni<br/><span>Annisa Rumpaka</span>",
+    "profil_title": "Sanggar Seni<br></br><span>Annisa Rumpaka</span>",
     "profil_p1": "Sanggar Seni Annisa Rumpaka adalah institusi seni pertunjukan yang berfokus pada pelestarian, pengembangan, dan internasionalisasi budaya Indonesia melalui karya tari dan pertunjukan yang inovatif.",
     "profil_p2": "Didirikan pada tahun 2008 dan berbasis di Bogor, Indonesia, sanggar ini telah berkembang menjadi platform kreatif yang menghubungkan nilai-nilai tradisional dengan pendekatan artistik kontemporer. Dengan dukungan pelatih profesional dan seniman berpengalaman, Annisa Rumpaka secara konsisten menghadirkan karya yang tidak hanya estetis, tetapi juga memiliki nilai edukatif dan diplomasi budaya.",
     "profil_p3": "Seiring dengan meningkatnya kepercayaan dari berbagai institusi dan masyarakat, Sanggar Seni Annisa Rumpaka aktif berpartisipasi dalam berbagai panggung nasional dan internasional sebagai representasi budaya Indonesia.",
@@ -78,30 +78,30 @@
   },
   "Services": {
     "hero_cat": "Layanan",
-    "hero_title": "Yang Kami<br/><em>Tawarkan</em>",
+    "hero_title": "Yang Kami<br></br><em>Tawarkan</em>",
     "hero_desc": "Dari pertunjukan panggung hingga pendidikan seni — kami hadir untuk melestarikan dan merayakan keindahan budaya Sunda.",
     "items": [
       {
         "cat": "Jasa Pertunjukan",
-        "title": "Seni<br/>Panggung",
+        "title": "Seni<br></br>Panggung",
         "desc": "Persembahan tari tradisional dan kontemporer untuk cultural performance, opening acara resmi, hingga kolaborasi seni lintas budaya. Kami menghadirkan penari terlatih dengan tata panggung profesional berskala nasional dan internasional.",
         "cta": "Konsultasi Gratis"
       },
       {
         "cat": "Arum Kostum",
-        "title": "Busana<br/>Adat",
+        "title": "Busana<br></br>Adat",
         "desc": "Koleksi kostum tari tradisional premium dengan detail handmade yang dikerjakan oleh pengrajin berpengalaman. Tersedia untuk sewa maupun pembelian bagi keperluan panggung profesional, festival budaya, dan dokumentasi.",
         "cta": "Lihat Koleksi"
       },
       {
         "cat": "Arum Art School",
-        "title": "Sekolah<br/>Seni Tari",
+        "title": "Sekolah<br></br>Seni Tari",
         "desc": "Program belajar tari untuk anak dan remaja dengan metode kreatif yang memadukan nilai tradisi Sunda dengan ekspresi seni kontemporer. Dibimbing langsung oleh penari senior berpengalaman lebih dari dua dekade.",
         "cta": "Pelajari Program"
       },
       {
         "cat": "Portofolio Event",
-        "title": "Festival &<br/>Panggung",
+        "title": "Festival &<br></br>Panggung",
         "desc": "Rekam jejak kami menghadirkan seni budaya di berbagai panggung bergengsi — dari festival nasional hingga panggung budaya internasional (Little Asia, Osaka Expo, Boulevard World Riyadh).",
         "cta": "Lihat Portofolio Event"
       }
@@ -112,13 +112,13 @@
       {"num": "300+", "lbl": "Alumni Art School"},
       {"num": "15+", "lbl": "Festival Bergengsi"}
     ],
-    "cta_title": "Siap Berkolaborasi<br/><em>Bersama Kami?</em>",
+    "cta_title": "Siap Berkolaborasi<br></br><em>Bersama Kami?</em>",
     "cta_desc": "Ceritakan kebutuhan Anda dan tim kami akan menghubungi dalam waktu 1×24 jam.",
     "cta_btn": "Hubungi Kami Sekarang"
   },
   "ArtSchool": {
     "hero_cat": "Art School",
-    "hero_title": "Sekolah<br/><em>Tari Sunda</em>",
+    "hero_title": "Sekolah<br></br><em>Tari Sunda</em>",
     "hero_desc": "Belajar tari Sunda dari pengajar berpengalaman lebih dari 20 tahun. Program lengkap untuk anak, remaja, hingga dewasa — dari pemula hingga lanjutan.",
     "prog_title": "Program <em>Pelatihan</em>",
     "prog_desc": "Tiga jalur belajar yang dirancang untuk menyesuaikan ritme dan tujuan setiap murid — dari pengenalan dasar hingga persiapan kompetisi profesional.",
@@ -167,7 +167,7 @@
         "unit": "/sesi 90 menit"
       }
     ],
-    "curr_title": "Empat Tahap<br/><em>Penguasaan</em>",
+    "curr_title": "Empat Tahap<br></br><em>Penguasaan</em>",
     "curr_desc": "Kurikulum kami dibagi menjadi empat tahap progresif. Setiap murid menjalani penilaian sebelum naik ke tahap berikutnya — memastikan fondasi yang kokoh sebelum melangkah lebih jauh.",
     "curr_quote": "Tari bukan sekadar gerak — ia adalah cara tubuh memahami sejarah.",
     "stages": [
@@ -189,7 +189,7 @@
       {
         "name": "Mahir",
         "age": "Advanced",
-        "desc": "Tari klasik kompleks seperti Tari Merak dan Topeng. Persiapan panggung profesional, kompetisi, dan koreografi mandiri."
+        "desc": "Tari klasik kompleks seperti Tari Merak dan Topeng. Persiapan panggung profesional, kompetisi, dan koreografi mendiri."
       }
     ],
     "inst_title": "Tim <em>Pengajar</em>",
@@ -210,13 +210,13 @@
       {"q": "Apakah ada kelas trial sebelum mendaftar?", "a": "Ya. Kami menyediakan satu sesi trial gratis untuk calon murid baru. Hubungi kami via WhatsApp untuk menjadwalkan."},
       {"q": "Di mana lokasi sekolahnya?", "a": "Studio utama berada di Bandung, Jawa Barat. Kelas privat dapat diadakan di lokasi murid (dalam kota Bandung) dengan biaya transportasi tambahan."}
     ],
-    "cta_title": "Siap Memulai<br/><em>Perjalananmu?</em>",
+    "cta_title": "Siap Memulai<br></br><em>Perjalananmu?</em>",
     "cta_desc": "Daftar sesi trial gratis untuk merasakan kelas kami secara langsung — tanpa biaya, tanpa komitmen.",
     "cta_btn": "Daftar Trial Gratis"
   },
   "Contact": {
     "hero_cat": "Kontak",
-    "hero_title": "Mari<br/><em>Terhubung</em>",
+    "hero_title": "Mari<br></br><em>Terhubung</em>",
     "hero_desc": "Kami senang mendengar dari Anda — baik untuk konsultasi pertunjukan, program Art School, maupun kolaborasi lainnya.",
     "form_title": "Kirim Pesan",
     "form_sub": "Isi formulir di bawah ini dan tim kami akan menghubungi Anda dalam 1×24 jam di hari kerja.",
