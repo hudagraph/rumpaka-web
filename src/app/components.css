@@ -74,7 +74,7 @@
   color: var(--gold);
 }
 .ph-content h1 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair-display), serif;
   font-size: clamp(44px, 7vw, 86px);
   font-weight: 900;
   line-height: 0.95;
@@ -102,7 +102,7 @@
   padding: 15px 36px;
   background: var(--gold);
   border-radius: 100px;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -137,7 +137,7 @@
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(10px);
   color: rgba(255, 255, 255, 0.85);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -220,7 +220,7 @@
 .cta-strip::before {
   content: "RUMPAKA";
   position: absolute;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair-display), serif;
   font-size: clamp(80px, 14vw, 200px);
   font-weight: 900;
   color: transparent;
@@ -238,7 +238,7 @@
   margin: 0 auto;
 }
 .cta-inner h2 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair-display), serif;
   font-size: clamp(32px, 4.5vw, 60px);
   font-weight: 900;
   letter-spacing: -0.025em;
@@ -276,7 +276,7 @@
   text-align: center;
 }
 .stat-num {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair-display), serif;
   font-size: clamp(38px, 4vw, 60px);
   font-weight: 900;
   color: var(--gold);

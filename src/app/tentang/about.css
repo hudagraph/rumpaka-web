@@ -1,0 +1,140 @@
+.about-wrap {
+  padding: 100px 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* PROFIL */
+.profil-sec {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 120px;
+}
+.profil-txt h2 {
+  font-family: var(--font-playfair-display), serif;
+  font-size: clamp(32px, 4vw, 48px);
+  margin-bottom: 24px;
+}
+.profil-txt h2 span { color: var(--gold); }
+.profil-txt p {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--text-mute);
+  margin-bottom: 20px;
+  text-wrap: pretty;
+}
+.profil-img {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  position: relative;
+  background: url('/assets/img/busana-adat.png') center/cover;
+}
+
+/* VISI MISI */
+.vm-sec {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 24px;
+  padding: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  margin-bottom: 120px;
+}
+.v-box h3, .m-box h3 {
+  font-family: var(--font-playfair-display), serif;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+.v-box p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.9);
+}
+.m-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.m-list li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-mute);
+}
+.m-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-size: 24px;
+  color: var(--gold);
+}
+
+/* BIDANG JASA */
+.jasa-sec {
+  margin-bottom: 80px;
+}
+.jasa-sec-head {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.jasa-sec-head h2 {
+  font-family: var(--font-playfair-display), serif;
+  font-size: clamp(32px, 4vw, 48px);
+  margin-bottom: 16px;
+}
+.jasa-sec-head p {
+  color: var(--text-mute);
+  font-size: 14.5px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.jasa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.jasa-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 40px 30px;
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+.jasa-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(200, 169, 110, 0.4);
+}
+.jasa-card-num {
+  font-family: var(--font-playfair-display), serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(200, 169, 110, 0.2);
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.jasa-card h4 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .about-wrap { padding: 80px 32px; }
+  .profil-sec, .vm-sec { gap: 48px; }
+  .vm-sec { padding: 60px 40px; }
+}
+@media (max-width: 768px) {
+  .about-wrap { padding: 60px 20px; }
+  .profil-sec { grid-template-columns: 1fr; margin-bottom: 80px; }
+  .vm-sec { grid-template-columns: 1fr; padding: 40px 24px; margin-bottom: 80px; }
+}

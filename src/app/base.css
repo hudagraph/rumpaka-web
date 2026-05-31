@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--dark);
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   cursor: none;
   overflow-x: hidden;

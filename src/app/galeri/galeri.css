@@ -1,0 +1,128 @@
+.gal-wrap {
+  padding: 100px 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sec-tit {
+  font-family: var(--font-playfair-display), serif;
+  font-size: clamp(36px, 5vw, 64px);
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.sec-tit span {
+  color: var(--gold);
+  font-style: italic;
+}
+.sec-desc {
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 15px;
+  margin-bottom: 80px;
+}
+
+/* MASONRY GALLERY */
+.masonry {
+  column-count: 3;
+  column-gap: 24px;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: #111;
+}
+.masonry-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+.masonry-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+.masonry-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.masonry-item:hover .masonry-overlay {
+  opacity: 1;
+}
+.masonry-overlay svg {
+  width: 32px;
+  height: 32px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(7, 7, 7, 0.96);
+  backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lightbox.show img {
+  transform: scale(1);
+}
+.lb-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px;
+  transition: color 0.3s;
+}
+.lb-close:hover {
+  color: var(--gold);
+}
+.lb-close svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 1024px) {
+  .masonry { column-count: 2; }
+}
+@media (max-width: 600px) {
+  .gal-wrap { padding: 60px 20px; }
+  .masonry { column-count: 1; }
+  .lb-close { top: 20px; right: 20px; }
+}
