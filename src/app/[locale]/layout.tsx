@@ -26,7 +26,7 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
-export async function generateMetadata({params}: {params: {locale: string}}): Promise<Metadata> {
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'Metadata'});
 
@@ -69,7 +69,7 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
