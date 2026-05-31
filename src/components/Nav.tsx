@@ -38,7 +38,7 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
     closeMenu();
   };
 
-  const navClass = `nav ${isHero ? "nav-hero" : ""} ${isScrolled ? "scrolled" : ""}`;
+  const navClass = `nav ${isHero ? "nav-hero" : ""} ${isScrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""}`;
 
   const navLinks = [
     { name: t("home"), href: "/" },
@@ -131,7 +131,7 @@ export default function Nav({ isHero = false }: { isHero?: boolean }) {
       >
         <nav className="mob-nav" aria-label="Navigasi mobile">
           {navLinks.map((link) => (
-            <div key={link.href}>
+            <div key={link.href} className="mob-nav-item">
               <Link 
                 href={link.href as any} 
                 className={pathname === link.href ? "act" : ""}
