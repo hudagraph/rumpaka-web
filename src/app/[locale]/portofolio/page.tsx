@@ -47,6 +47,17 @@ export default function PortofolioPage() {
   const highlights = events.filter(e => e.is_highlight);
   const timeline = events.filter(e => !e.is_highlight);
 
+  // Helper to render text with newlines as <br>
+  const renderRich = (text: string | null) => {
+    if (!text) return null;
+    return text.split("\n").map((line, i) => (
+      <span key={i}>
+        {line}
+        {i < text.split("\n").length - 1 && <br />}
+      </span>
+    ));
+  };
+
   return (
     <main id="main">
       <Nav />
@@ -89,10 +100,10 @@ export default function PortofolioPage() {
                   <div className="hl-txt">
                     <div className="hl-yr">{hl.year}</div>
                     <h3>{locale === 'en' ? (hl.title_en || hl.title) : hl.title}</h3>
-                    <p>{locale === 'en' ? (hl.description_en || hl.description) : hl.description}</p>
+                    <p>{renderRich(locale === 'en' ? (hl.description_en || hl.description) : hl.description)}</p>
                     <div className="hl-tari">
                       <div className="hl-tari-tit">{locale === 'en' ? (hl.tari_title_en || hl.tari_title) : hl.tari_title}</div>
-                      <div className="hl-tari-list">{locale === 'en' ? (hl.tari_list_en || hl.tari_list) : hl.tari_list}</div>
+                      <div className="hl-tari-list">{renderRich(locale === 'en' ? (hl.tari_list_en || hl.tari_list) : hl.tari_list)}</div>
                     </div>
                   </div>
                 </div>
@@ -107,7 +118,7 @@ export default function PortofolioPage() {
                 <div key={item.id} className="tl-item">
                   <div className="tl-dot"></div>
                   <div className="tl-yr">{item.year}</div>
-                  <div className="tl-desc">{locale === 'en' ? (item.description_en || item.description) : item.description}</div>
+                  <div className="tl-desc">{renderRich(locale === 'en' ? (item.description_en || item.description) : item.description)}</div>
                 </div>
               ))}
             </section>

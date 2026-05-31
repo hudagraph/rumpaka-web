@@ -27,7 +27,7 @@ export default function LayananPage() {
               em: (chunks) => <em>{chunks}</em>
             })}
           </h1>
-          <p>{t("hero_desc")}</p>
+          <p>{t.rich("hero_desc", { br: () => <br /> })}</p>
         </div>
       </section>
 
@@ -46,7 +46,7 @@ export default function LayananPage() {
                   className="svc-img-wrap" 
                   style={{ backgroundImage: `url('/assets/img/${imgs[i]}')`, backgroundSize: "cover", backgroundPosition: "center" }} 
                   role="img" 
-                  aria-label={item.title.replace("<br />", " ")}
+                  aria-label={item.title.replace("<br>", " ")}
                 >
                   <span className="svc-num" aria-hidden="true">0{i + 1}</span>
                 </div>
@@ -58,7 +58,7 @@ export default function LayananPage() {
                     br: () => <br />
                   })}
                 </h2>
-                <p>{item.desc}</p>
+                <p>{t.rich(`items.${i}.desc`, { br: () => <br /> })}</p>
                 <Link href={hrefs[i] as any} className="link-arrow">
                   {item.cta}
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -93,7 +93,7 @@ export default function LayananPage() {
               em: (chunks) => <em>{chunks}</em>
             })}
           </h2>
-          <p>{t("cta_desc")}</p>
+          <p>{t.rich("cta_desc", { br: () => <br /> })}</p>
           <Link href="/kontak" className="btn-gold">
             {t("cta_btn")}
             <svg viewBox="0 0 24 24" aria-hidden="true">

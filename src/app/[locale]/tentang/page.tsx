@@ -40,9 +40,9 @@ export default function TentangPage() {
                 span: (chunks) => <span>{chunks}</span>
               })}
             </h2>
-            <p>{t("profil_p1")}</p>
-            <p>{t("profil_p2")}</p>
-            <p>{t("profil_p3")}</p>
+            <p>{t.rich("profil_p1", { br: () => <br /> })}</p>
+            <p>{t.rich("profil_p2", { br: () => <br /> })}</p>
+            <p>{t.rich("profil_p3", { br: () => <br /> })}</p>
           </div>
           <div className="profil-img" aria-hidden="true"></div>
         </section>
@@ -51,14 +51,14 @@ export default function TentangPage() {
         <section className="vm-sec">
           <div className="v-box">
             <h3>{t("visi_title")}</h3>
-            <p>{t("visi_desc")}</p>
+            <p>{t.rich("visi_desc", { br: () => <br /> })}</p>
           </div>
           <div className="m-box">
             <h3>{t("misi_title")}</h3>
             <ul className="m-list">
               {/* Iterating over list from JSON */}
               {[0, 1, 2, 3, 4].map(i => (
-                <li key={i}>{t(`misi_list.${i}`)}</li>
+                <li key={i}>{t.rich(`misi_list.${i}`, { br: () => <br /> })}</li>
               ))}
             </ul>
           </div>
@@ -68,13 +68,13 @@ export default function TentangPage() {
         <section className="jasa-sec">
           <div className="jasa-sec-head">
             <h2>{t("jasa_title")}</h2>
-            <p>{t("jasa_desc")}</p>
+            <p>{t.rich("jasa_desc", { br: () => <br /> })}</p>
           </div>
           <div className="jasa-grid">
             {[0, 1, 2, 3, 4, 5].map(i => (
               <div className="jasa-card" key={i}>
                 <div className="jasa-card-num">{i + 1 < 10 ? `0${i + 1}` : i + 1}</div>
-                <h4>{t(`jasa_items.${i}`)}</h4>
+                <h4>{t.rich(`jasa_items.${i}`, { br: () => <br /> })}</h4>
               </div>
             ))}
           </div>
